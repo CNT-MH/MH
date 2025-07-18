@@ -65,8 +65,36 @@
   padding-left: 2vw;
   padding-right: 2vw;
 }
+/* 타이ㅌ,ㄹ*/
+.tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: transform 0.2s ease-in-out;
+  padding: 10px;
+  background-color: #f8f9fa;
+}
 
+.tile:hover {
+  transform: translateY(-5px);
+  background-color: #e9ecef;
+}
 
+.icon-img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.icon-label {
+  margin-top: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #333;
+}
 /* 반응형 텍스트 */
 .fs-4 {
   font-size: clamp(2rem, 5vw, 3rem);
@@ -138,26 +166,7 @@
         <div class="col-md-auto"></div>
             <div class="col col-lg-2" style="text-align: right;"> 
                 <div class="row text-center icon-grid">
-    <div class="col-6 col-md-3 mb-3">
-      <a href="https://app.buonestop.com/expo00" target="_blank">
-        <img src="https://yt3.googleusercontent.com/r1V6UCWrgSLZjE_ZAd-dbHp7BEsL94-96lulNz-0Zij4jj_3fmOUmffWYKjbjefXqWS7E8_ZbKk=s120-c-k-c0x00ffffff-no-rj" class="icon-img" alt="홈페이지">
-        <div class="icon-label">홈페이지</div>
-      </a>
-    </div>
-    <div class="col-6 col-md-3 mb-3">
-      <a href="https://m.cafe.naver.com/ca-fe/exporo448?tc=section_home_my_cafe" target="_blank">
-        <img src="https://cafe.naver.com/favicon.ico" class="icon-img" alt="엑스포 아파트">
-        <div class="icon-label">카페</div>
-      </a>
-    </div>
-    <div class="col-6 col-md-3 mb-3">
-      <a href="http://www.mholdings.co.kr/main/index.html" target="_blank">
-        <img src="https://yt3.googleusercontent.com/qVm2GXXlya13fWl_Z9t-9CyvAuf-SZt8-PUTHpuN5WkNOdAVCL64VvNboYYxvUiBKoLL3nuS2A=s160-c-k-c0x00ffffff-no-rj" class="icon-img" alt="머핀홀딩스홈페이지">
-        <div class="icon-label">머핀홀딩스</div>
-      </a>
-    </div>
-  
-  </div> 
+   
             </div>
         </div>
   
@@ -201,7 +210,27 @@
 
 </section>
 <section class="container my-5">
- 
+  <div class="row text-center">
+  <div class="col-6 col-md-3 mb-3">
+    <a href="https://app.buonestop.com/expo00" target="_blank">
+        <div class="tile-icon"> <img src="https://yt3.googleusercontent.com/r1V6UCWrgSLZjE_ZAd-dbHp7BEsL94-96lulNz-0Zij4jj_3fmOUmffWYKjbjefXqWS7E8_ZbKk=s120-c-k-c0x00ffffff-no-rj" class="icon-img" alt="홈페이지">
+        <div class="icon-label">홈페이지</div>
+      </a>
+    </div></div>
+    <div class="col-6 col-md-3 mb-3">
+      <a href="https://m.cafe.naver.com/ca-fe/exporo448?tc=section_home_my_cafe" target="_blank">
+        <img src="https://cafe.naver.com/favicon.ico" class="icon-img" alt="엑스포 아파트">
+        <div class="icon-label">카페</div>
+      </a>
+    </div>
+    <div class="col-6 col-md-3 mb-3">
+      <a href="http://www.mholdings.co.kr/main/index.html" target="_blank">
+        <img src="https://yt3.googleusercontent.com/qVm2GXXlya13fWl_Z9t-9CyvAuf-SZt8-PUTHpuN5WkNOdAVCL64VvNboYYxvUiBKoLL3nuS2A=s160-c-k-c0x00ffffff-no-rj" class="icon-img" alt="머핀홀딩스홈페이지">
+        <div class="icon-label">머핀홀딩스</div>
+      </a>
+    </div>
+    </div>
+  </div> 
 </section>
     <main class="container">
       
