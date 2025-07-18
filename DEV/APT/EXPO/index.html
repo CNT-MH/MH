@@ -26,25 +26,7 @@
  <script type="text/javascript">
   document.oncontextmenu = function(){return false;}
 </script>
-<!-- html,body {  transform-origin: top;
-      transform: scale(0.9); }
-  .col {text-align: left;}
-  .swiper-pagination { font-size: calc(20px + 0.5vw)!important; bottom: 10px; left: 50%; transform: translateX(-50%); position: fixed;-webkit-text-stroke-color: white;
-    -webkit-text-stroke-width: thin; }
-  .container iframe { width: 100%;  /* 99% */ height: 35vw;  /* 750px */ }
-  @keyframes example {
-  from {color: rgb(199, 195, 195);}
-  to {color: rgb(51, 51, 47);}
-  }
-  .footer {padding: 1vw; text-align: center; margin-top: 1vw;}
-  @media (min-width: 650px){
-  .fs-4 { font-size: calc(20px + 0.5vw)!important;}
-  }
-  @media (min-width: 1200px){
-  .fs-4 { font-size: calc(20px + 0.5vw)!important;}
-  }
-  .fs-4 { font-size: calc(20px + 0.5vw)!important;}
--->
+
 <style>
 
   html, body {
@@ -53,11 +35,18 @@
   font-family: 'Noto Sans KR', sans-serif;
   font-size: 16px;
   line-height: 1.5;
-  /*background-color: #fff;*/
   background-image: url('https://raw.githubusercontent.com/CNT-MH/MH/main/DEV/APT/EXPO/배경250617.jpg');
   background-size: cover;
   background-position: center;
     
+}
+ .transparent-section {
+  background-color: rgba(255, 255, 255, 0.85); /* 반투명 흰색 */
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(4px); /* 선택 */
+  padding: 1rem;
+  margin-top: 1rem;
 }
 .background-overlay {
   background-color: rgba(255, 255, 255, 0.85); /* 반투명 흰색 배경 */
@@ -71,27 +60,12 @@
   padding-right: 4vw;
 }
 
-/* Swiper pagination 
-.swiper-pagination {
-  font-size: 1rem;
-  bottom: 10px;
-  text-align: center;
-}*/
-
 /* 반응형 텍스트 */
 .fs-4 {
   font-size: clamp(1.2rem, 3vw, 1.5rem);
   font-weight: bold;
   animation: colorFade 10s infinite;
 }
-
-/* A4 비율 iframe 
-.responsive-iframe {
-  width: 100%;
-  aspect-ratio: 210 / 297; /* A4 비율 
-  box-shadow: 0 0 1px gray;
-  border: none;
-} */
 
 /* 애니메이션 효과 */
 @keyframes colorFade {
