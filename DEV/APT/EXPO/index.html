@@ -26,7 +26,97 @@
  <script type="text/javascript">
   document.oncontextmenu = function(){return false;}
 </script>
-<link rel="stylesheet" href="AS/styles.css">
+<STYLE>html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  background-color: white;
+}
+
+.container {
+  max-width: 100%;
+  padding-left: 4vw;
+  padding-right: 4vw;
+}
+
+.container-custom {
+  max-width: 1155px;
+  margin: 0 auto;
+  padding-left: 2vw;
+  padding-right: 2vw;
+}
+
+.tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: transform 0.2s ease-in-out;
+  padding: 10px;
+  background-color: #f8f9fa;
+}
+
+.tile:hover {
+  transform: translateY(-5px);
+  background-color: #e9ecef;
+}
+
+.icon-img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.icon-label {
+  margin-top: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #333;
+}
+
+.fs-4 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: bold;
+  animation: colorFade 10s infinite;
+}
+
+@keyframes colorFade {
+  from { color: #ccc; }
+  to { color: #333; }
+}
+
+.footer {
+  text-align: center;
+  padding: 2vw 0;
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+.youtube-container {
+  position: relative;
+  width: 100%;
+  max-width: 1260px;
+  margin: 0 auto;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.youtube-container iframe {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+}
+</STYLE>
+  
+
 
 
 </head>
