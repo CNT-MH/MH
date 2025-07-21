@@ -114,6 +114,62 @@
   width: 100%;
   height: 100%;
 }
+/* 설문 */
+ /* 그라데이션 애니메이션 정의 */
+    @keyframes gradientShift {
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* 화려한 버튼 스타일 */
+    .btn-fancy {
+      display: inline-block;
+      padding: 1rem 1rem;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #fff;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border: none;
+      border-radius: 30px;
+      background: linear-gradient(45deg, #ff416c, #ff4b2b, #1d2671, #c33764);
+      background-size: 300% 300%;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: gradientShift 5s ease infinite;
+    }
+   
+/* (기존) 고정 위치 */
+.btn-fancy-fixed {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+}
+
+/* (기존) 일반 호버—고정 버튼 이외에는 사용 */
+.btn-fancy:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 0 25px rgba(0,0,0,0.3);
+}
+
+/* (추가) 고정된 버튼의 호버—translateX 유지 */
+.btn-fancy.btn-fancy-fixed:hover {
+  transform: translateX(-50%) translateY(-3px) scale(1.05);
+  box-shadow: 0 0 25px rgba(0,0,0,0.3);
+}
+    /* 스크롤 시에도 하단 중앙에 고정 */
+    .btn-fancy-fixed {
+      position: fixed;
+      bottom: 5px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1000;
+    }  
 </STYLE>
   
 
@@ -265,6 +321,14 @@
   </div> 
 </section>
 
+   <!-- 설문 섹션 -->
+<a
+  href="https://forms.gle/titp5dp88nUofZdS9"
+  class="btn-fancy btn-fancy-fixed"
+  target="_blank"
+  rel="noopener noreferrer">
+  설문 참여하기
+</a>
   <!-- 이미지 임베드 섹션 -->
 <section id="misconception" class="container my-5">
   <div class="text-center">
