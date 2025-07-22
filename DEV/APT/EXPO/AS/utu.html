@@ -2,7 +2,7 @@
 <html  lang="ko"  >
 <head>
   <meta charset="UTF-8">
-  <title>엑스포 컬리넌시티-소식지</title> 
+  <title>엑스포 컬리넌시티</title> 
   <!-- 뷰포트 설정 -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3,minimum-scale=1, user-scalable=yes,viewport-fit=cover"> <!-- Set initial scale to 75% -->
    
@@ -26,26 +26,19 @@
  <script type="text/javascript">
   document.oncontextmenu = function(){return false;}
 </script>
-<STYLE>html, body {
+<STYLE>+html, body {
   margin: 0;
   padding: 0;
   font-family: 'Noto Sans KR', sans-serif;
   font-size: 16px;
   line-height: 1.5;
-  
-  width: 100%;
+  background-color: white;
 }
 
 .container {
   max-width: 100%;
   padding-left: 4vw;
   padding-right: 4vw;
-}
-.bg-fill {
-  background-image: url(https://github.com/CNT-MH/MH/blob/main/DEV/APT/EXPO/%EB%B0%B0%EA%B2%BD250617.jpg?raw=true);
-  background-repeat: repeat;      /* 이미지 반복 제거 */
-  background-size: cover;           /* 컨테이너 전체를 비율 유지하며 채움 */
-  background-position: center center; /* 가로·세로 중앙 위치 */
 }
 
 .container-custom {
@@ -55,10 +48,6 @@
   padding-right: 2vw;
 }
 
-.bg-dark-green {
-    --bs-bg-opacity: 1;
-    background-color: #073f25 !important;
-}
 .tile {
   display: flex;
   flex-direction: column;
@@ -97,11 +86,11 @@ height:100%;
 .fs-4 {
   font-size: clamp(2rem, 5vw, 3rem);
   font-weight: bold;
-  animation: colorFade 10s infinite;
 }
 .py-3 {
     padding-top: 0.5rem !important;
     padding-bottom: 0.5rem !important;
+    align-content: center;
 }
 @keyframes colorFade {
   from { color: #ccc; }
@@ -145,28 +134,27 @@ height:100%;
 
     /* 화려한 버튼 스타일 */
     .btn-fancy {
-      display: inline-block;
-      padding: 1rem 1rem;
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: #fff;
-      text-decoration: none;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      border: none;
-      border-radius: 30px;
-      background: linear-gradient(45deg, #ff416c, #ff4b2b, #1d2671, #c33764);
-      background-size: 300% 300%;
-      box-shadow: 0 0 15px rgba(0,0,0,0.2);
-      cursor: pointer;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      animation: gradientShift 5s ease infinite;
-    }
-   
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    font-size: 1.0rem;
+    font-weight: 800;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: none;
+    border-radius: 15px;
+    background: linear-gradient(45deg, #ff416c, #ff4b2b, #1d2671, #c33764);
+    background-size: 300% 300%;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: gradientShift 5s ease infinite;
+}
 /* (기존) 고정 위치 */
 .btn-fancy-fixed {
   position: fixed;
-  bottom: 20px;
+  bottom: 15px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 1000;
@@ -191,9 +179,9 @@ height:100%;
   transform: translateX(-50%);
   z-index: 1000;
 }  
-.py-3 {
-    align-content: center;}
-	
+
+.fs-5 {
+text-align: center;}
 </STYLE>
   
 
@@ -201,16 +189,15 @@ height:100%;
 
 </head>
 
-  
 
-<body class="bg-fill"><!-- oncontextmenu="return false" onselectstart="return false" ondragstart="return false" onkeydown="return false" -->
+<body ><!-- oncontextmenu="return false" onselectstart="return false" ondragstart="return false" onkeydown="return false" -->
    
 
   <div class="container "  style="padding-left: 3.5vw; padding-right: 3.5vw;" > 
    <header>
   <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand fw-bold " href="#">엑스포 컬리넌시티-게시판</a>
+      <a class="navbar-brand fs-4 fw-bold " href="#">엑스포 컬리넌시티</a>
       <button class="navbar-toggler" type="button"
               data-bs-toggle="collapse"
               data-bs-target="#navbarCollapse"
@@ -221,15 +208,33 @@ height:100%;
       </button>
 
       <div class="collapse navbar-collapse" id="navbarCollapse">
-        <!-- 메뉴를 오른쪽 끝으로 정렬하려면 ms-auto 사용 -->
-       <ul class="navbar-nav ms-auto mb-md-0">
+      
+        <ul class="navbar-nav ms-auto mb-2 mb-md-0">
 
           <!-- 1) 홈페이지 -->
           <li class="nav-item">
             <a class="nav-link active"
                aria-current="page"
-               href="https://cnt-mh.github.io/MH/DEV/APT/EXPO/index.html">
-              메인페이지돌아가기
+               href="https://app.buonestop.com/expo00">
+              홈페이지
+            </a>
+          </li>
+
+          <!-- 2) 카페 -->
+          <li class="nav-item">
+            <a class="nav-link"
+               href="https://cafe.naver.com/exporo448"
+               target="_blank"
+               rel="noopener">
+              카페
+            </a>
+          </li>
+
+          <!-- 3) 문의처 (푸터로 이동) -->
+          <li class="nav-item">
+            <a class="nav-link"
+               href="https://raw.githubusercontent.com/CNT-MH/MH/main/DEV/APT/EXPO/그림2.jpg">
+              문의처
             </a>
           </li>
 
@@ -239,9 +244,69 @@ height:100%;
   </nav>
 </header>
 
- <!-- 유튜브 임베드 섹션 -->
   
+        <div class="row">
+            
+          <div class="col">
+           
+            </div>
+            <div class="col-md-auto"></div>
+            <div class="col col-lg-2" style="text-align: right;"> 
+                
+            </div>
+        </div>
+ 
+  
+    <div class="container" style="margin-bottom: 1vw;">
+      <div class="row">
+            
+          <div class="col">
+            <span class="fs-4 mb-4 text-start" >엑스포 컬리넌시티</span>   </div>
+        <div class="col-md-auto"></div>
+            <div class="col col-lg-2" style="text-align: right;"> 
+                <div class="row text-center icon-grid">
+   
+            </div>
+        </div>
+  
+        <div class="row">
+          <!--   라인 <nav class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom" ></nav>-->
+        </div>
+    </div>
+
+<br>
 <section id="youtube-section" class="container-custom my-4">
+  <div class="shorts-container">
+    <iframe 
+      src="https://www.youtube.com/embed/6Hh1o5Ory_Q?autoplay=1&mute=1" <!--자동재생정책상 음소거필수 -->
+      title="YouTube Shorts - 엑스포 컬리넌시티"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen>
+    </iframe>
+  </div>
+</section>
+
+<style>
+  .shorts-container {
+    position: relative;
+    width: 100%;
+    max-width: 409px; /* 쇼츠 원본 너비 기준 */
+    aspect-ratio: 9 / 16;
+    margin: 0 auto;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  }
+
+  .shorts-container iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+</style>
+<!--<section id="youtube-section" class="container-custom my-4">
 
       <div class="youtube-container">
         <iframe src="https://www.youtube.com/embed/pjOEjHM9w-Q" 
@@ -251,4 +316,269 @@ height:100%;
                 allowfullscreen>
         </iframe>
       </div>
-</section > 
+</section > -->
+
+<div class="container py-3 mb-4  "></div>
+<style>
+ 
+   .board-section {
+	
+    max-width: inherit;  
+    margin: 0;
+    padding: 0rem;
+  }
+
+  
+  .board-card {
+    position: relative;
+    background-color: #f9f9f9;
+    border-radius: 0.5rem;
+    padding: 1.25rem 1.25rem;
+    margin-bottom: 1rem;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  }
+
+  .board-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.12);
+  }
+
+  .board-link {
+    text-decoration: none;
+    font-weight: 600;
+    color: #333;
+    display: flex;
+    align-items: center;
+  }
+
+  .board-icon {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    margin-right: 12px;
+    background-color: #0078d4;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 18px;
+  }
+
+  @media (max-width: 576px) {
+    .board-card {
+      padding: 1rem;
+    }
+    .board-icon {
+      width: 28px;
+      height: 28px;
+      font-size: 16px;
+    }
+  }
+</style>
+
+
+
+<!--############구분선시작-->
+<div class="container py-3  border-bottom"></div>
+<div class="container py-3 mb-4 border-bottom">
+  <div class="d-flex flex-wrap justify-content-center  fs-4 f fw-bold">
+    바로가기 모음
+  </div></div>
+<!--############구분선끝-->
+
+  <div class="row g-4">
+    <!-- 1) 홈페이지 바로가기 -->
+    <div class="col-12 col-md-4 d-flex ">
+      <a 
+        href="https://app.buonestop.com/expo00"
+        target="_blank"
+        class="btn btn-outline w-100 py-3 fw-bold board-card"
+        style="max-height: 60px; margin-bottom: 2px;"
+      >
+        <img
+          src="https://yt3.googleusercontent.com/r1V6UCWrgSLZjE_ZAd-dbHp7BEsL94-96lulNz-0Zij4jj_3fmOUmffWYKjbjefXqWS7E8_ZbKk=s120-c-k-c0x00ffffff-no-rj"
+          alt="홈페이지" class = "icon-img" >
+          <!-- style="width:48px; height:48px; margin-bottom:0.5rem;" justify-content-center -->
+         홈페이지 바로가기
+      </a>
+    </div>
+
+    <!-- 2) 네이버 카페 바로가기 -->
+    <div class="col-12 col-md-4 d-flex">
+      <a
+        href="https://m.cafe.naver.com/ca-fe/exporo448?tc=section_home_my_cafe"
+        target="_blank"
+        class="btn btn-outline w-100 py-3 fw-bold board-card "
+        style="max-height: 60px; margin-bottom: 2px;" 
+      >
+        <img 
+       src="https://i.imgur.com/5Qgv4zj.jpeg"
+          alt="카페" class = "icon-img ">
+          <!-- style="width:48px; height:48px; margin-bottom:0.5rem;" justify-content-center -->
+      네이버 카페 바로가기
+      </a>
+    </div>
+
+    <!-- 3) 유튜브 바로가기 -->
+    <div class="col-12 col-md-4">
+	  <a
+		href="https://www.youtube.com/@전기수-j4x"
+		target="_blank"
+		class="btn btn-outline w-100 d-flex align-items-center justify-content-center gap-2 fw-bold board-card"
+		style="height: 60px; margin-bottom: 2px;"
+	  >
+		<img
+		  src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/YouTube_full-color_icon_%282024%29.svg/240px-YouTube_full-color_icon_%282024%29.svg.png"
+		  alt="유튜브"
+		  class="icon-img-u"
+		><span>유튜브 바로가기</span>
+	  </a>
+	</div>
+  </div>
+  
+    <!-- 4) 건축설계(안)영상 -->
+    <div class="col-12 col-md-4">
+	  <a
+		href="https://www.youtube.com/@전기수-j4x"
+		target="_blank"
+		class="btn btn-outline w-100 d-flex align-items-center justify-content-center gap-2 fw-bold board-card"
+		style="height: 60px; margin-bottom: 2px;"
+	  >
+		<!--<img
+		  src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/YouTube_full-color_icon_%282024%29.svg/240px-YouTube_full-color_icon_%282024%29.svg.png"
+		  alt="유튜브"
+		  class="icon-img-u"
+		>-->
+		<span>건축설계(안)영상</span>
+	  </a>
+	</div>
+  </div>
+</section>
+
+<div class="container py-3 mb-4  "></div>
+
+
+   <!-- 설문 섹션 -->
+<a
+  href="https://forms.gle/YUc4cphHAkJmjFAa6"
+  class="btn-fancy btn-fancy-fixed"
+  target="_blank"
+  rel="noopener noreferrer">
+  설문 참여하기
+</a>
+
+
+<!--############구분선시작-->
+<div class="container py-3  border-bottom"></div>
+<div class="container py-3  border-bottom">
+  <div class="flex-wrap justify-content-center fs-4 fw-bold" style="
+    text-align: center;">
+   엑스포아파트 재건축사업 
+ <div> 소식 모아보기</div>
+ </div></div>
+<!--############구분선끝-->
+
+
+ 
+<section class="board-section">
+
+  <!-- 카드형 게시판 항목 -->
+  <div class="board-card" style="    margin-top: 1.25rem;">
+    <a href="https://cnt-mh.github.io/MH/DEV/APT/EXPO/AS/board1.html" target="_blank" class="board-link">
+      <div class="board-icon">1</div>
+      재건축 사업의 오해와 진실
+    </a>
+  </div>
+  <!-- 추가 항목 예시 -->
+  <!--
+  <div class="board-card">
+    <a href="#" class="board-link">
+      <div class="board-icon">2</div>
+      정비사업 절차 안내
+    </a>
+  </div>
+  -->
+<p>
+<br>
+</section>
+    <main class="container">
+
+  
+      
+  <div id="alertContainer"></div>
+        <!-- <iframe src="https://onedrive.live.com/embed?resid=D202B95C4C8D5642%21166&authkey=!AKKsE39dYpH6boI&em=2" width="476" height="288" frameborder="0" scrolling="no"></iframe> -->
+        <!-- <iframe src="https://onedrive.live.com/embed?resid=D202B95C4C8D5642%21168&authkey=!AIyf2iJexfHq-7g&em=2" width="476" height="288" frameborder="0" scrolling="no"></iframe> -->
+       
+       <!--    <iframe  id="myIframe"  src="swiper.html" style="box-shadow:  0px 0px 1px gray; width: 100%; padding-bottom: 0.15vw; "></iframe>
+ 
+  <script> 
+  <!-- //프레임비율 A4
+    function adjustIframeHeight() {
+    var iframe = document.getElementById("myIframe");
+    var width = iframe.clientWidth;
+    var height = (width * 21.07) / 29.7;
+    iframe.style.height = height + "px";
+  }
+  function setMaxWidth() {
+    var iframe = document.getElementById("myIframe");
+    var maxWidth = 1296; // Set your desired maximum width here (in pixels)
+    iframe.style.maxWidth = maxWidth + "px";
+  }
+  // 페이지 로드 완료 시 iframe 높이 조절
+  window.addEventListener("DOMContentLoaded", function () {
+    adjustIframeHeight();
+    setMaxWidth();
+  });
+
+  // Adjust the height of the iframe when the window is resized
+  window.addEventListener("resize", adjustIframeHeight);
+</script>-->  
+
+    </main>
+<!-- 복사방지코드-수정권한 봉삼 
+ <script src="https://bongbongsam.github.io/mycode/js/prevent_copy.js"></script>-->   
+  <script>
+    function handleIframeMessage(event) {
+      if (event.data === 'PrintScreenPressedInsideIframe') {
+        noframe(); // Remove the content from the iframe
+        showAlert();
+        event.preventDefault();
+    event.stopPropagation();
+    return false;
+      }
+      if (event.data === 'ControlPPressedInsideIframe') {
+        noframe(); // Remove the content from the iframe
+        showAlert();
+        event.preventDefault();
+    event.stopPropagation();
+    return false;
+      }
+    }
+
+    // Attach event listener to receive messages from the iframe
+    window.addEventListener('message', handleIframeMessage);
+</script>
+
+    <div class="container">
+        <div class="row">
+            <div class="col" style="color: GRAY; padding: 0 0 12px 12px; font-size: calc(10px + 0.2vw);">
+                
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+<footer class="container-fluid">
+  <div class="container">
+  <div style="color:#e5e5e5; text-align:right; font-size: calc(10px + 0.2vw); "> </div>
+  <div style="color:#e5e5e5; text-align:right; font-size: calc(10px + 0.2vw);"> production : 머핀홀딩스 Co., Ltd / glass</div>
+</div></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0/html2canvas.js"></script>
+<script src = "test.js"></script>
+
+</body>
+</html>
