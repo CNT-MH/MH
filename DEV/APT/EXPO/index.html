@@ -183,6 +183,68 @@ height:100%;
 
 .fs-5 {
 text-align: center;}
+
+
+
+
+/* 상담버튼 */
+ /* 그라데이션 애니메이션 정의 */
+    @keyframes gradientShift1 {
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* 화려한 버튼 스타일 */
+    .btn-fancy1 {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    font-size: 1.0rem;
+    font-weight: 800;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: none;
+    border-radius: 15px;
+    background: linear-gradient(45deg, #0d6efd, #0d6efd);
+    background-size: 300% 300%;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: gradientShift1 5s ease infinite;
+}
+/* (기존) 고정 위치 */
+.btn-fancy-fixed1 {
+  position: fixed;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+}
+
+/* (기존) 일반 호버—고정 버튼 이외에는 사용 */
+.btn-fancy1:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 0 25px rgba(0,0,0,0.3);
+}
+
+/* (추가) 고정된 버튼의 호버—translateX 유지 */
+.btn-fancy1.btn-fancy-fixed1:hover {
+  transform: translateX(-50%) translateY(-3px) scale(1.05);
+  box-shadow: 0 0 25px rgba(0,0,0,0.3);
+}
+/* 스크롤 시에도 하단 중앙에 고정 */
+.btn-fancy-fixed1 {
+  position: fixed;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+}  
+
+.fs-5 {
+text-align: center;}
 </STYLE>
   
 
@@ -547,6 +609,18 @@ text-align: center;}
 <!--######################################################-->
 
 
+<!--######################################################-->
+
+<a
+  href="tel:0428671003" 
+  class="btn-fancy1 btn-fancy-fixed1"
+  target="_blank"
+  rel="noopener noreferrer">
+  📞전화상담📞
+</a>
+<!--######################################################-->
+
+
 	
 
     <main class="container">
@@ -636,7 +710,7 @@ text-align: center;}
 
 .footer-links.mid-links a {
   color: #888;
-  font-weight: 400;
+  font-weight: 500;
 }
 
 .footer-copy {
