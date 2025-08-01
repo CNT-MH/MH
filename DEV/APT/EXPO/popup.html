@@ -22,7 +22,7 @@
       bottom: 0;
       display: none;
       padding: 15px;
-      z-index: 99999;
+      z-index: 9999;
     }
 
     .popup {
@@ -108,50 +108,35 @@
     </div>
     <div class="popup-foot">
       <div class="pop-btn" id="popup-confirm">확인</div>
-      <div class="pop-btn" id="popup-close-today">오늘 하루 열지 않기</div>
+      <div class="pop-btn" id="popup-close-today">닫기</div>
     </div>
   </div>
 </div>
 
 <!-- 스크립트 -->
 <script>
-  function getTodayDateStr() {
+   function getTodayDateStr() {
     const today = new Date();
     return today.toISOString().split('T')[0];
   }
 
+  function showPopup() {
+    document.getElementById("popup-wrap").style.display = "flex";
+  }
 
   function hidePopup() {
     document.getElementById("popup-wrap").style.display = "none";
   }
 
-  function closeToday() {
+ function closeToday() {
     localStorage.setItem("doNotShowPopup", getTodayDateStr());
     hidePopup();
   }
-function animateButtonAndClose(element, callback) {
-  element.style.transform = "scale(0.97)";
-  element.style.opacity = "0.8";
-  setTimeout(() => {
-    element.style.transform = "";
-    element.style.opacity = "";
-    callback();
-  }, 150);
-}
 
-document.getElementById("popup-confirm").addEventListener("click", function () {
-  animateButtonAndClose(this, hidePopup);
-});
-
-document.getElementById("popup-close-today").addEventListener("click", function () {
-  animateButtonAndClose(this, () => {
-    localStorage.setItem("doNotShowPopup", getTodayDateStr());
-    hidePopup();
-  });
-});
   window.onload = function () {
     const today = getTodayDateStr();
-    const skip = localStorage.getItem("doNotShowPopup");
+    // 팝업제어
+	const skip = localStorage.removeItem("doNotShowPopup");
 
     const showStart = "2025-07-31";
     const showEnd = "2025-08-04";
@@ -160,6 +145,7 @@ document.getElementById("popup-close-today").addEventListener("click", function 
       showPopup();
     }
   };
+localStorage.setItem("popupHideUntil", Date.now() + 24 * 60 * 60 * 1000);
 
   document.getElementById("popup-confirm").addEventListener("click", hidePopup);
   document.getElementById("popup-close-today").addEventListener("click", closeToday);
