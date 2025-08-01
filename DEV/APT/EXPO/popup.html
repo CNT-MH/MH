@@ -9,42 +9,53 @@
       padding: 0;
       background: transparent;
     }
-
-    .popup-wrapper {
-      position: fixed;
-      top: 20vh;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 90%;
-      max-width:max-content;
-      background: #fff;
-      border: 3px solid #ff0000;
-      box-shadow: 0 0 20px rgba(0,0,0,0.2);
-      z-index: 9999;
-      border-radius: 10px;
-      font-family: 'Noto Sans KR', sans-serif;
-    }
+..popup-wrapper {
+  position: fixed;
+  top: 10vh;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 500px;
+  background: #fff;
+  border: 3px solid #ff0000;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  z-index: 9999;
+  border-radius: 12px;
+  font-family: 'Noto Sans KR', sans-serif;
+  padding: 16px;
+}
+/* ✅ 모바일 환경에서만 너비를 85%로 고정 */
+@media screen and (max-width: 574px) {
+  .popup-wrapper {
+    width: 90%;
+    max-width: none;  
+  }
+}
 .popup-content {
-  font-size: clamp(1rem, 2.5vw, 3rem);
-  /* chlth tjsgh chleo*/
-  line-height: 1.5;
+  font-size: clamp(1rem, 3vw, 1.25rem); /* ✅ PC ~ 모바일 자동 조정 */
+  line-height: 1.6;
+  text-align: center;
   word-break: keep-all;
 }
 
 .popup-content strong {
-  font-size: clamp(1.2rem, 2.5vw, 3.5em);
-  display: block;
+  font-size: clamp(1.25rem, 4vw, 1.5rem);
+  color: #cc0000;
   margin-bottom: 0.5em;
+  display: block;
 }
+
     .popup-box {
       padding: 10px;
       text-align: center;
     }
+	
 .popup-btn {
-  width: 80%;
-  padding: 12px;
-  font-size: clamp(0.8rem, 2.5vw, 1.5rem);
-  background: #444444a1;
+	gap: 10px;
+  width: 100%;
+  padding: 14px;
+  font-size: clamp(1rem, 3vw, 1.25rem);
+  background: #ff0000cc;
   color: white;
   border: none;
   border-radius: 8px;
@@ -53,13 +64,14 @@
 }
 
 .popup-btn:hover {
-  background: #222;
+  background: #c70000;
 }
-  .popup-actions {
+.popup-actions {
   display: flex;
   flex-direction: column;
+  align-items: center;
   margin-top: 20px;
-      align-items: center;
+  gap: 12px; /* ✅ 버튼 사이 여백 */
 }
     .popup-actions button {
       background:#ff0000b3;
@@ -78,11 +90,11 @@
     padding-left: 15px;">
     <div class="popup-content">
       <strong>📢 엑스포 컬리넌시티 📢<br>
-	  설명회 안내</strong><br>
+	  설 명 회 안 내</strong><br>
       <p style="margin-top: 0px;">
 	   8월 4일(월) 오후 7시<br>
         4단지 주민설명회 개최<br>
-		장소: 중앙상가 상담센터<br> </p><br> 
+		장소: 중앙상가 상담센터 </p> 
     </div>
     <div class="popup-actions" style="flex-direction: column; gap: 10px;">
     <button class="popup-btn" onclick="closePopup()">닫기</button>
