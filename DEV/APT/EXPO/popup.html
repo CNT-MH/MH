@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>팝업창</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: transparent;
+    }
+
+    .popup-wrapper {
+      position: fixed;
+      top: 20vh;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      max-width:max-content;
+      background: #fff;
+      border: 3px solid #ff0000;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+      z-index: 9999;
+      border-radius: 10px;
+      font-family: 'Noto Sans KR', sans-serif;
+    }
+.popup-content {
+  font-size: clamp(2rem, 2.5vw, 3.5em);
+  /* chlth tjsgh chleo*/
+  line-height: 1.5;
+  word-break: keep-all;
+}
+
+.popup-content strong {
+  font-size: clamp(3rem, 2.5vw, 3.5em);
+  display: block;
+  margin-bottom: 0.5em;
+}
+    .popup-box {
+      padding: 10px;
+      text-align: center;
+    }
+.popup-btn {
+  width: 80%;
+  padding: 12px;
+  font-size: clamp(2rem, 2.5vw, 2rem);
+  background: #444444a1;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.popup-btn:hover {
+  background: #222;
+}
+  .popup-actions {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+      align-items: center;
+}
+    .popup-actions button {
+      background:#ff0000b3;
+      color: white;
+      border: none;
+      padding: 5px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+<div class="popup-wrapper" id="popup">
+  <div class="popup-box" style="
+    padding-right: 50px;
+    padding-left: 50px;">
+    <div class="popup-content">
+      <strong>📢 엑스포 컬리넌시티 📢<br>
+	  설명회 안내</strong><br>
+      <p style="margin-top: 0px;">
+	   8월 4일(월) 오후 7시<br>
+        4단지 주민설명회 개최<br>
+		장소: 중앙상가 상담센터<br> </p><br> 
+    </div>
+    <div class="popup-actions" style="flex-direction: column; gap: 10px;">
+    <button class="popup-btn" onclick="closePopup()">닫기</button>
+    <button class="popup-btn" onclick="closeToday()">오늘 하루 열지 않기</button>
+  </div>
+</div>
+<script><script>
+function getTodayDateStr() {
+  const today = new Date();
+  return today.toISOString().split('T')[0];
+}
+
+function closePopup() {
+  document.getElementById("popup").style.display = "none";
+}
+
+function closeToday() {
+  localStorage.setItem("doNotShowPopup", getTodayDateStr());
+  closePopup();
+}
+
+window.onload = function () {
+  const today = getTodayDateStr();
+  const skip = localStorage.getItem("doNotShowPopup");
+
+  const showStart = "2025-07-31";
+  const showEnd = "2025-08-04";
+
+  if (today === skip || today < showStart || today > showEnd) {
+    document.getElementById("popup").style.display = "none";
+  } else {
+    document.getElementById("popup").style.display = "block";
+  }
+};
+</script>
+
+</body>
+</html>
