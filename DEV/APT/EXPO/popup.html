@@ -120,9 +120,6 @@
     return today.toISOString().split('T')[0];
   }
 
-  function showPopup() {
-    document.getElementById("popup-wrap").style.display = "flex";
-  }
 
   function hidePopup() {
     document.getElementById("popup-wrap").style.display = "none";
@@ -132,7 +129,26 @@
     localStorage.setItem("doNotShowPopup", getTodayDateStr());
     hidePopup();
   }
+function animateButtonAndClose(element, callback) {
+  element.style.transform = "scale(0.97)";
+  element.style.opacity = "0.8";
+  setTimeout(() => {
+    element.style.transform = "";
+    element.style.opacity = "";
+    callback();
+  }, 150);
+}
 
+document.getElementById("popup-confirm").addEventListener("click", function () {
+  animateButtonAndClose(this, hidePopup);
+});
+
+document.getElementById("popup-close-today").addEventListener("click", function () {
+  animateButtonAndClose(this, () => {
+    localStorage.setItem("doNotShowPopup", getTodayDateStr());
+    hidePopup();
+  });
+});
   window.onload = function () {
     const today = getTodayDateStr();
     const skip = localStorage.getItem("doNotShowPopup");
