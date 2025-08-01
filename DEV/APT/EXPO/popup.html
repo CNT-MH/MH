@@ -3,132 +3,150 @@
 <head>
   <meta charset="UTF-8">
   <title>팝업창</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body {
+    * {
       margin: 0;
       padding: 0;
-      background: transparent;
+      box-sizing: border-box;
     }
-..popup-wrapper {
-  position: fixed;
-  top: 10vh;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
-  max-width: 500px;
-  background: #fff;
-  border: 3px solid #ff0000;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-  z-index: 9999;
-  border-radius: 12px;
-  font-family: 'Noto Sans KR', sans-serif;
-  padding: 16px;
-}
-/* ✅ 모바일 환경에서만 너비를 85%로 고정 */
-@media screen and (max-width: 574px) {
-  .popup-wrapper {
-    width: 90%;
-    max-width: none;  
-  }
-}
-.popup-content {
-  font-size: clamp(1rem, 3vw, 1.25rem); /* ✅ PC ~ 모바일 자동 조정 */
-  line-height: 1.6;
-  text-align: center;
-  word-break: keep-all;
-}
 
-.popup-content strong {
-  font-size: clamp(1.25rem, 4vw, 1.5rem);
-  color: #cc0000;
-  margin-bottom: 0.5em;
-  display: block;
-}
+    .popup-wrap {
+      background-color: rgba(0, 0, 0, 0.4);
+      justify-content: center;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: none;
+      padding: 15px;
+      z-index: 9999;
+    }
 
-    .popup-box {
+    .popup {
+      width: 90%;
+      max-width: 500px;
+      background-color: #264db5;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 5px 10px 10px 1px rgba(0, 0, 0, .3);
+      color: white;
+    }
+
+    .popup-head {
+      padding: 16px;
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .popup-body {
+      background-color: white;
+      color: #000;
       padding: 10px;
       text-align: center;
     }
-	
-.popup-btn {
-	gap: 10px;
-  width: 100%;
-  padding: 14px;
-  font-size: clamp(1rem, 3vw, 1.25rem);
-  background: #ff0000cc;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
 
-.popup-btn:hover {
-  background: #c70000;
-}
-.popup-actions {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 20px;
-  gap: 12px; /* ✅ 버튼 사이 여백 */
-}
-    .popup-actions button {
-      background:#ff0000b3;
-      color: white;
-      border: none;
-      padding: 5px 12px;
-      border-radius: 5px;
+    .popup-body h1 {
+      font-size: 1.4rem;
+      margin-bottom: 12px;
+      color: #264db5;
+    }
+
+    .popup-body p {
+      margin: 6px 0;
+    }
+
+    .popup-foot {
+      display: flex;
+      border-top: 0.1px  solid #ccc;
+      height: 50px;
+    }
+
+    .pop-btn {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       cursor: pointer;
+      font-weight: bold;
+      background: #3b5fbf;
+      color: white;
+    }
+.pop-btn:active {
+  transform: scale(0.97);
+  opacity: 0.8;
+}
+    .pop-btn + .pop-btn {
+     // border-left: 0.1px  solid #fff;
+    }
+
+    @media (max-width: 576px) {
+      .popup {
+        width: 100%;
+      }
     }
   </style>
 </head>
 <body>
-<div class="popup-wrapper" id="popup">
-  <div class="popup-box" style="
-    padding-right: 15px;
-    padding-left: 15px;">
-    <div class="popup-content">
-      <strong>📢 엑스포 컬리넌시티 📢<br>
-	  설 명 회 안 내</strong><br>
-      <p style="margin-top: 0px;">
-	   8월 4일(월) 오후 7시<br>
-        4단지 주민설명회 개최<br>
-		장소: 중앙상가 상담센터 </p> 
+
+<!-- 오버레이 + 팝업 -->
+<div class="popup-wrap" id="popup-wrap">
+  <div class="popup">
+    <div class="popup-head" style="
+    padding-right: 5px;
+    padding-left: 5px;
+">📢 엑스포 컬리넌시티 📢</div>
+    <div class="popup-body">
+      <h1>설 명 회 안 내</h1>
+      <p>8월 4일(월) 오후 7시</p>
+      <p>4단지 주민설명회 개최</p>
+      <p>장소: 중앙상가 상담센터</p>
+      <p>문의처: 042-867-1003</p>
     </div>
-    <div class="popup-actions" style="flex-direction: column; gap: 10px;">
-    <button class="popup-btn" onclick="closePopup()">닫기</button>
-    <button class="popup-btn" onclick="closeToday()">오늘 하루 열지 않기</button>
+    <div class="popup-foot">
+      <div class="pop-btn" id="popup-confirm">확인</div>
+      <div class="pop-btn" id="popup-close-today">오늘 하루 열지 않기</div>
+    </div>
   </div>
 </div>
-<script><script>
-function getTodayDateStr() {
-  const today = new Date();
-  return today.toISOString().split('T')[0];
-}
 
-function closePopup() {
-  document.getElementById("popup").style.display = "none";
-}
-
-function closeToday() {
-  localStorage.setItem("doNotShowPopup", getTodayDateStr());
-  closePopup();
-}
-
-window.onload = function () {
-  const today = getTodayDateStr();
-  const skip = localStorage.getItem("doNotShowPopup");
-
-  const showStart = "2025-07-31";
-  const showEnd = "2025-08-04";
-
-  if (today === skip || today < showStart || today > showEnd) {
-    document.getElementById("popup").style.display = "none";
-  } else {
-    document.getElementById("popup").style.display = "block";
+<!-- 스크립트 -->
+<script>
+  function getTodayDateStr() {
+    const today = new Date();
+    return today.toISOString().split('T')[0];
   }
-};
+
+  function showPopup() {
+    document.getElementById("popup-wrap").style.display = "flex";
+  }
+
+  function hidePopup() {
+    document.getElementById("popup-wrap").style.display = "none";
+  }
+
+  function closeToday() {
+    localStorage.setItem("doNotShowPopup", getTodayDateStr());
+    hidePopup();
+  }
+
+  window.onload = function () {
+    const today = getTodayDateStr();
+    const skip = localStorage.getItem("doNotShowPopup");
+
+    const showStart = "2025-07-31";
+    const showEnd = "2025-08-04";
+
+    if (today !== skip && today >= showStart && today <= showEnd) {
+      showPopup();
+    }
+  };
+
+  document.getElementById("popup-confirm").addEventListener("click", hidePopup);
+  document.getElementById("popup-close-today").addEventListener("click", closeToday);
 </script>
 
 </body>
