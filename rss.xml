@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<!--<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0">
   <channel>
     <title>엑스포 아파트 재건축 | 엑스포 컬리넌시티 통합페이지</title>
@@ -18,5 +18,5 @@
 
 
    <!-- 추가 공지사항 item 반복 -->
-  </channel>
+   <!--  </channel>
 </rss>
