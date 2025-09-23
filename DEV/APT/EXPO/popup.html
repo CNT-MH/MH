@@ -28,7 +28,7 @@
     .popup {
       width: 90%;
       max-width: 500px;
-      background-color: #002ea7;
+      background-color: #fe7700;
       border-radius: 10px;
       overflow: hidden;
       box-shadow: 5px 10px 10px 1px rgba(0, 0, 0, .3);
@@ -74,7 +74,7 @@
       align-items: center;
       cursor: pointer;
       font-weight: bold;
-      background: #002ea7;
+      background: #fe7700;
       color: white;
     }
 .pop-btn:active {
@@ -101,13 +101,14 @@
     padding-right: 5px;
     padding-left: 5px;
 ">📢 엑스포 컬리넌시티 📢</div>
-    <div class="popup-body">
-      <h1>🎉52% 동의율 달성🎉</h1>
+    <div class="popup-body" style="padding-bottom: 0px;padding-top: 0px;">
+       <img src="https://raw.githubusercontent.com/CNT-MH/MH/main/DEV/APT/EXPO/AS/그림4.png" alt="설명회 안내 이미지" style="max-width:100%; height:auto; margin:10px 0;">
+     <!--<h1>🎉52% 동의율 달성🎉</h1>
       <p>9월 15일(월) 오후 7시</p>
       <p>마지막 주민간담회 개최</p>
       <p>장소: 중앙상가 상담센터</p>
-      <p>문의처: 042-867-1003</p>
-    </div>
+      <p>문의처: 042-867-1003</p>-->
+	</div>
     <div class="popup-foot">
      <div class="pop-btn" id="popup-close-today">확인</div>
 	    <!-- <div class="pop-btn" id="popup-confirm">확인</div>
@@ -141,8 +142,8 @@
     // 팝업제어
 	const skip = localStorage.removeItem("doNotShowPopup");
 
-    const showStart = "2025-09-09";
-    const showEnd = "2025-09-15";
+    const showStart = "2025-09-21";
+    const showEnd = "2025-09-29";
 
     if (today !== skip && today >= showStart && today <= showEnd) {
       showPopup();
