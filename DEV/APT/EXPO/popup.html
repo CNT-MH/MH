@@ -43,7 +43,7 @@
     }
 
     .popup-body {
-	    
+
     font-weight: bold;
       background-color: white;
       color: #000;
@@ -97,111 +97,64 @@
 <!-- 오버레이 + 팝업 -->
 <div class="popup-wrap" id="popup-wrap">
   <div class="popup">
-    <div class="popup-head" style="
+    <!--<div class="popup-head" style="
     padding-right: 5px;
     padding-left: 5px;
-">📢 엑스포 컬리넌시티 📢</div>
+">  </div>-->
     <div class="popup-body" style="padding-bottom: 0px;padding-top: 0px;">
-       <img src="https://raw.githubusercontent.com/CNT-MH/MH/main/DEV/APT/EXPO/AS/그림4.png" alt="설명회 안내 이미지" style="max-width:100%; height:auto; margin:10px 0;">
-     <!--<h1>🎉52% 동의율 달성🎉</h1>
-      <p>9월 15일(월) 오후 7시</p>
-      <p>마지막 주민간담회 개최</p>
-      <p>장소: 중앙상가 상담센터</p>
-      <p>문의처: 042-867-1003</p>-->
-	</div>
+       <img src="https://raw.githubusercontent.com/CNT-MH/MH/main/DEV/APT/EXPO/AS/2025추석엑스포.png" alt="추석" stylealt="추석이미지" style="max-width:100%; height:auto; margin:10px 0;">
+
+        </div>
     <div class="popup-foot">
-     <div class="pop-btn" id="popup-close-today">확인</div>
-	    <!-- <div class="pop-btn" id="popup-confirm">확인</div>
+     <div class="pop-btn" id="popup-confirm">확인</div>
+            <!-- <div class="pop-btn" id="popup-confirm">확인</div>
       <div class="pop-btn" id="popup-close-today">닫기</div>-->
     </div>
   </div>
 </div>
 
-<!-- 스크립트 -->
+
+<!-- 팝업 내용을 불러올 컨테이너 (popup.html 파일이 여기에 삽입됨) -->
+<div id="popup-container"></div>
+
 <script>
-   function getTodayDateStr() {
-    const today = new Date();
-    return today.toISOString().split('T')[0];
-  }
 
-  function showPopup() {
-    document.getElementById("popup-wrap").style.display = "flex";
-  }
+// ********================= 팝업 열기 함수 =================
+ function showPopup() {
+        //****** popup.html 안에는 <div id="popup-wrap"> 가 있다고 가정
+    const wrap = document.getElementById("popup-wrap");
+    if (wrap) wrap.style.display = "flex";  
+         //***** display:flex → 화면 중앙 정렬된 팝업이 보이도록 설정
+}
 
-  function hidePopup() {
-    document.getElementById("popup-wrap").style.display = "none";
-  }
+// *****================= 팝업 닫기 함수 =================
+function hidePopup() {
+    const wrap = document.getElementById("popup-wrap");
+    if (wrap) wrap.style.display = "none";  
+    //***** display:none → 팝업 숨김
+}
 
- function closeToday() {
-    localStorage.setItem("doNotShowPopup", getTodayDateStr());
-    hidePopup();
-  }
+// ================= 페이지 로드 시 실행 =================
+window.addEventListener('DOMContentLoaded', function () {
+    // popup.html 파일을 fetch 로 불러옴
+    fetch('https://cnt-mh.github.io/MH/DEV/APT/EXPO/popup.html')
+        .then(res => res.text())   // 응답을 HTML 텍스트로 변환
+        .then(html => {
+            // 불러온 popup.html 내용을 #popup-container 안에 삽입
+            document.getElementById("popup-container").innerHTML = html;
+            
+            // 팝업 열기
+            showPopup();
 
-  window.onload = function () {
-    const today = getTodayDateStr();
-    // 팝업제어
-	const skip = localStorage.removeItem("doNotShowPopup");
-
-    const showStart = "2025-09-21";
-    const showEnd = "2025-09-29";
-
-    if (today !== skip && today >= showStart && today <= showEnd) {
-      showPopup();
-    }
-  };
-localStorage.setItem("popupHideUntil", Date.now() + 24 * 60 * 60 * 1000);
-
-  document.getElementById("popup-confirm").addEventListener("click", hidePopup);
-  document.getElementById("popup-close-today").addEventListener("click", closeToday);
-
-
-/*      오늘하루열지않기 수정할 코드 
-  // 날짜 문자열 반환 (YYYY-MM-DD)
-  function getTodayDateStr() {
-    const today = new Date();
-    return today.toISOString().split('T')[0];
-  }
-
-  // 팝업 표시
-  function showPopup() {
-    const popup = document.getElementById("popup-wrap");
-    if (popup) popup.style.display = "flex";
-  }
-
-  // 팝업 숨김
-  function hidePopup() {
-    const popup = document.getElementById("popup-wrap");
-    if (popup) popup.style.display = "none";
-  }
-
-  // 오늘 하루 보지 않기
-  function closeToday() {
-    const now = Date.now();
-    const oneDayLater = now + 24 * 60 * 60 * 1000;
-    localStorage.setItem("popupHideUntil", oneDayLater.toString());
-    hidePopup();
-  }
-
-  // 페이지 로드 시 실행
-  window.addEventListener("DOMContentLoaded", function () {
-    const now = Date.now();
-    const hideUntil = parseInt(localStorage.getItem("popupHideUntil") || "0", 10);
-
-    const showStart = new Date("2025-07-31");
-    const showEnd = new Date("2025-08-04");
-    const today = new Date();
-
-    if (now > hideUntil && today >= showStart && today <= showEnd) {
-      showPopup();
-    }
-
-    // 이벤트 바인딩
-    document.getElementById("popup-confirm")?.addEventListener("click", hidePopup);
-    document.getElementById("popup-close-today")?.addEventListener("click", closeToday);
-  });*/
+            // popup.html 안에 확인 버튼이 있다고 가정 (id="popup-confirm")
+            // 확인 버튼을 누르면 팝업 닫기 실행
+            document.getElementById("popup-confirm")?.addEventListener("click", hidePopup);
+        })
+        .catch(err => console.error("팝업 불러오기 실패:", err));
+});
 </script>
+   
 
-	
 
 </body>
-</html>
+</html> 
