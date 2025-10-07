@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>머핀홀딩스 개발사업 통합운영페이지</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=3,minimum-scale=1,user-scalable=yes">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="https://cnt-mh.github.io/MH/DEV/LOGO/favicon.png">
+  <style>
+    :root {
+      --bg: #f7f9fc;
+      --text: #333;
+      --font: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --radius: 16px;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; font-family:var(--font); }
+    body { background:var(--bg); color:var(--text); min-height:100vh; display:flex; flex-direction:column; }
+		
+		
+		header {
+		 
+		  background:#002ea7;
+		  color:white;
+		  text-align:center;
+		  padding:0.8rem 1rem;
+		  font-weight:700;
+		  box-shadow:0 2px 6px rgba(0,0,0,0.15);
+		  position:sticky;
+		  top:0;
+		  z-index:10;
+		}
+		header { font-size:1.2rem;  letter-spacing:-0.3px;
+    }
+
+	.header-inner {
+		background: #002ea7;
+	  display:flex;
+	  align-items:center;
+	  justify-content:center;
+	  flex-wrap:wrap;
+	  gap:0.6rem;
+	}
+
+	header .logo {
+	  max-height:40px;        /* ✅ 헤더 높이에 따라 자동 조정 */
+	  height:auto;
+	  width:auto;
+	}
+
+	.header-title {
+
+		font: initial;
+	  font-size:1.2rem;
+	  letter-spacing:-0.3px;
+	}
+
+
+	
+    main {
+      flex:1; display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:1.2rem; padding:1.4rem;
+    }
+    .card {
+      background:white; border-radius:var(--radius);
+      box-shadow:0 4px 12px rgba(0,0,0,0.08);
+      padding:1.3rem 1.5rem;
+      display:flex; flex-direction:column;
+      border-top:6px solid transparent;
+      transition:transform 0.25s, box-shadow 0.25s;
+    }
+    .card:hover { transform:translateY(-4px); box-shadow:0 6px 16px rgba(0,0,0,0.12); }
+    .card h3 {
+      margin-bottom:0.5rem; font-size:1.1rem;
+      line-height:1.4; word-break:keep-all;
+    }
+    /* === 공통 배지 스타일 === */
+		.badge {
+		  display: inline-block;
+		  background: var(--badge-bg, #e5e9ff);  /* 개별 색상 없을 때 기본색 */
+		  color: var(--badge-text, #002ea7);
+		  font-size: 0.8rem;
+		  font-weight: 600;
+		  padding: 0.25rem 0.6rem;
+		  border-radius: 3px;
+		  margin-bottom: 0.3rem;
+		  transition: all 0.3s ease;
+		}
+
+    .section {
+      margin-bottom:1rem;
+      padding:0.3rem 0.4rem;
+      border-radius:5px;
+      background:#f8f9fb;
+    }
+    .section h4 {
+      font-size:0.9rem;
+      margin-bottom:0.4rem;
+      color:#555;
+    }
+    .section p {
+      font-size:0.8rem;
+      line-height:1.45;
+      white-space:pre-line;
+    }
+    .card a {
+    align-self: auto;
+      margin-top:auto;
+      background:#002ea7;
+      color:white;
+      text-decoration:none;
+      padding:0.45rem 0.9rem;
+      border-radius:8px;
+      font-size:0.88rem;
+    }
+    footer {
+      text-align:center;
+      font-size:0.8rem;
+      color:#777;
+      padding:1rem;
+      border-top:1px solid #ddd;
+      background:#fafafa;
+    }
+
+    /* 색상 테마 */
+    /* === 색상 테마 === */
+	.expo {
+	  border-top-color: #0046ff;
+	  --badge-bg: #dddddd66;    /* 배지 배경색 */
+	  --badge-text: #002ea7;  /* 배지 글자색 */
+	}
+	.expo h3 { color:#002ea7; }
+	.expo.card a {
+		  background:#e5e9ff;    /* 버튼 배경색 */
+		  color:#002ea7;           /* 버튼 글자색 */
+		}
+	.expo.card a:hover {
+		  background:#0046ff;  
+		  color:white;  /* hover  */
+		}
+		
+		
+	.sadang300 {
+	  border-top-color: #00a78e;
+	  --badge-bg: #dddddd66;
+	  --badge-text: #005346;
+	}
+	.sadang300 h3 { color:#005346; }
+	.sadang300.card a {
+		  background:#00a78e26;    /* 버튼 배경색 */
+		  color:#005346;           /* 버튼 글자색 */
+		}
+	.sadang300.card a:hover {
+		  background:#00a78e;  
+		  color: white ;  /* hover  */
+		}
+		
+		
+	
+	.sadang12, .sdb344 {
+	  border-top-color: #8c4eff;
+	  --badge-bg: #dddddd66;
+	  --badge-text: #330092;
+	}
+	
+	.sadang12 h3, .sdb344 h3 { color:#330092; }
+	.sadang12.card a, .sdb344.card a {
+		  background:#8e5ee84a;    /* 버튼 배경색 */
+		  color:#330092;           /* 버튼 글자색 */
+		}
+	.sadang12.card a:hover , .sdb344.card a:hover {
+		  background:#8c4eff;  
+		  color: white;  /* hover  */
+		}
+		
+	
+/* 📱 모바일 대응 */
+@media(max-width:480px){
+  .header-inner {
+  
+    flex-direction:column;
+    text-align:center;
+  }
+  header .logo {
+    max-height:34px;
+  }
+  .header-title {
+    font: initial;
+    font-size:0.8rem;
+  }
+  main{ grid-template-columns:1fr; padding:1rem; }
+      .card{ padding:0.5rem 0.5rem; }
+}
+   
+  </style>
+</head>
+
+<body>
+  <header> <div class="header-inner">
+    <img src="http://www.mholdings.co.kr/RAD/PEG/logo_17103186357105.png" alt="머핀홀딩스 로고" class="logo">
+    <span class="header-title">개발사업 통합운영페이지</span>
+  </div></header>
+
+  <main>
+    <!-- ✅ 카드 개별 컨트롤 가능 (고정 구조) -->
+    <div class="card expo" id="expoCard">
+      <h3 >엑스포 아파트 재건축</h3>
+      <div class="badge" id="expoStage">로딩 중...</div>
+    <!--  <div class="section">
+        <h4>📌 전주 이슈</h4>
+        <p id="expoPrev">로딩 중...</p>
+      </div> -->
+      <div class="section">
+        <h4>🔥 금주 이슈</h4>
+        <p id="expoCurr">로딩 중...</p>
+      </div>
+      <a href="https://cnt-mh.github.io/MH/DEV/APT/EXPO/index.html" target="_blank"> 🌐 통합페이지바로가기</a>
+    </div>
+
+    <div class="card sadang12" id="sadang12Card">
+      <h3>사당12구역 신통</h3>
+      <div class="badge" id="sadang12Stage">로딩 중...</div>
+      <!--<div class="section">
+        <h4>📌 전주 이슈</h4>
+        <p id="sadang12Prev">로딩 중...</p>
+      </div>-->
+      <div class="section">
+        <h4>🔥 금주 이슈</h4>
+        <p id="sadang12Curr">로딩 중...</p>
+      </div>
+      <a href="https://cnt-mh.github.io/REDEV/SITE2/SD/12/index.html" target="_blank">🌐 통합페이지바로가기</a>
+    </div>
+	
+	
+     <div class="card sdb344" id="sdb344Card">
+      <h3>신대방3구역 신통</h3>
+      <div class="badge" id="sdb344Stage">로딩 중...</div>
+     <!-- <div class="section">
+        <h4>📌 전주 이슈</h4>
+        <p id="sdb344Prev">로딩 중...</p>
+      </div>-->
+      <div class="section">
+        <h4>🔥 금주 이슈</h4>
+        <p id="sdb344Curr">로딩 중...</p>
+      </div>
+      <a href="https://cnt-mh.github.io/REDEV/SITE2/SDB/344/index.html" target="_blank">🌐 통합페이지바로가기</a>
+    </div>
+    <div class="card sadang300" id="sadang300Card">
+      <h3>사당300번지 모아타운</h3>
+      <div class="badge" id="sadang300Stage">로딩 중...</div>
+     <!-- <div class="section">
+        <h4>📌 전주 이슈</h4>
+        <p id="sadang300Prev">로딩 중...</p>
+      </div> -->
+      <div class="section">
+        <h4>🔥 금주 이슈</h4>
+        <p id="sadang300Curr">로딩 중...</p>
+      </div>
+      <a href="https://cnt-mh.github.io/REDEV/SITE2/SD/300/index.html" target="_blank">🌐 통합페이지바로가기</a>
+    </div>
+
+    
+  </main>
+
+  <footer>
+    © 2025 머핀홀딩스 내부용
+  </footer>
+
+  <script>
+  const SHEET_URL = "https://script.google.com/macros/s/AKfycbybMyca3x_BszUiTnq50g-XolayOM_uY-_tjR8-wZvrwkZPixa6qJnAYueHbyfcRDEL/exec";
+
+  fetch(SHEET_URL)
+    .then(res => res.json())
+    .then(data => {
+      data.forEach(item => {
+        const name = item.현장명.replace(/\s|\(|\)|\[|\]/g, "");
+        const stage = item.진행단계.replace(/\n/g, " ");
+        const prev = item.전주이슈.replace(/\n/g, "<br>");
+        const curr = item.금주이슈.replace(/\n/g, "<br>");
+
+        if (name.includes("엑스포")) {
+          document.getElementById("expoStage").innerText = stage;
+          //document.getElementById("expoPrev").innerHTML = prev;
+          document.getElementById("expoCurr").innerHTML = curr;
+        }
+        else if (name.includes("사당12") || name.includes("288")) {
+          document.getElementById("sadang12Stage").innerText = stage;
+          //document.getElementById("sadang12Prev").innerHTML = prev;
+          document.getElementById("sadang12Curr").innerHTML = curr;
+        }
+        else if (name.includes("사당동300") || name.includes("300일대")) {
+          document.getElementById("sadang300Stage").innerText = stage;
+          //document.getElementById("sadang300Prev").innerHTML = prev;
+          document.getElementById("sadang300Curr").innerHTML = curr;
+        }
+        else if (name.includes("신대방3") || name.includes("344")) {
+          document.getElementById("sdb344Stage").innerText = stage;
+         // document.getElementById("sdb344Prev").innerHTML = prev;
+          document.getElementById("sdb344Curr").innerHTML = curr;
+        }
+      });
+    })
+    .catch(err => {
+      console.error("데이터 로딩 오류:", err);
+      document.querySelectorAll("p").forEach(p => p.textContent = "데이터 로딩 실패");
+    });
+  </script>
+</body>
+</html>
