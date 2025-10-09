@@ -931,10 +931,10 @@
 <!-- 푸터 끝 --> 
 <!--######################################################-->
 
-<!-- 팝업이 삽입될 컨테이너 -->
+<!-- 팝업이 삽입될 컨테이너 
   <div id="popup-container"></div>
 
-  <!-- 팝업 스크립트 -->
+  
   <script>
     function showPopup() {
       const wrap = document.getElementById("popup-wrap");
@@ -954,9 +954,52 @@
         })
         .catch(err => console.error("팝업 불러오기 실패:", err));
     });
-  </script>
+  </script>-->
 
+  
+<!-- ✅ 팝업이 삽입될 컨테이너 -->
+<div id="popup-container"></div>
 
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    
+    /** ✅ 팝업 노출 기간 설정 **/
+    const startDate = new Date("2025-10-09T00:00:00"); // 노출 시작일
+    const endDate = new Date("2025-10-10T23:59:59"); // 노출 종료일
+    const today = new Date();
+    
+    // ✅ 팝업을 오늘 닫았는지 여부 (localStorage)
+    const closedToday = localStorage.getItem("popupClosedDate");
+    const todayString = today.toDateString();
+    
+    // ✅ 오늘 이미 닫은 경우 → 표시하지 않음
+   // if (closedToday === todayString) return;
+    
+    // ✅ 노출 기간이 아닐 경우 → 표시하지 않음
+    if (today < startDate || today > endDate) return;
+    
+    /** ✅ popup.html 불러오기 **/
+    fetch("popup.html")
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById("popup-container").innerHTML = html;
+        
+        const wrap = document.getElementById("popup-wrap");
+        const closeBtn = document.getElementById("popup-confirm");
+        
+        if (wrap) wrap.style.display = "flex";
+        
+        // 확인 버튼 클릭 시 닫기 + 오늘은 다시 안 보기
+        if (closeBtn) {
+          closeBtn.addEventListener("click", () => {
+            wrap.style.display = "none";
+            localStorage.setItem("popupClosedDate", todayString);
+          });
+        }
+      })
+      .catch(err => console.error("팝업 로드 실패:", err));
+  });
+</script>
 </body>
 
 </html>
