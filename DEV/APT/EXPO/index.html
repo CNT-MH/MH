@@ -979,7 +979,7 @@
     if (today < startDate || today > endDate) return;
     
     /** ✅ popup.html 불러오기 **/
-    fetch("popup.html")
+    fetch("https://cnt-mh.github.io/MH/DEV/APT/EXPO/popup.html")
       .then(res => res.text())
       .then(html => {
         document.getElementById("popup-container").innerHTML = html;
