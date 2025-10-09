@@ -115,7 +115,7 @@
 </div>
 
 
-<!-- 팝업 내용을 불러올 컨테이너 (popup.html 파일이 여기에 삽입됨) -->
+<!-- 팝업 내용을 불러올 컨테이너 (popup.html 파일이 여기에 삽입됨) 
 <div id="popup-container"></div>
 
 <script>
@@ -153,9 +153,14 @@ window.addEventListener('DOMContentLoaded', function () {
         })
         .catch(err => console.error("팝업 불러오기 실패:", err));
 });
-</script>
+</script>-->
    
-
+<script>
+window.addEventListener('DOMContentLoaded', () => {
+  document.getElementById("popup-wrap").style.display = "flex";
+});
+</script>
+  
 
 </body>
 </html> 
