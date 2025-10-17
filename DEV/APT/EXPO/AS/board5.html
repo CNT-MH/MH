@@ -1,0 +1,345 @@
+<!DOCTYPE html> 
+<html  lang="ko"  >
+<head>
+  <meta charset="UTF-8">
+  <title>엑스포 컬리넌시티-소식지</title> 
+  <!-- 뷰포트 설정 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3,minimum-scale=1, user-scalable=yes,viewport-fit=cover"> <!-- Set initial scale to 75% -->
+   
+  <meta name="author" content="엑스포 아파트 재건축 | 엑스포 컬리넌시티">
+  <meta name="description" content="엑스포 컬리넌시티 재건축 통합페이지">
+  <!--썸네일-->
+<meta property="og:type" content="website">
+<meta property="og:title" content="엑스포 컬리넌시티">
+<meta property="og:description" content="엑스포 컬리넌시티 통합페이지">
+<meta property="og:image" content="https://raw.githubusercontent.com/CNT-MH/MH/main/DEV/APT/EXPO/썸네일이미지.png">
+<meta property="og:url" content="https://cnt-mh.github.io/MH/DEV/APT/EXPO/index.html">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/swiper/swiper-bundle.min.css" rel="stylesheet" > 
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+ 
+ <!-- Swiper.js (터치 슬라이더) 스타일 적용 -->
+ <script src="https://unpkg.com/swiper@10.0.0-beta.1/swiper-bundle.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.12.313/pdf.js"></script>
+
+ <script type="text/javascript">
+  document.oncontextmenu = function(){return false;}
+</script>
+<STYLE>html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  width: 100%; 
+}
+
+.container {
+  max-width: 100%;
+  padding-left: 4vw;
+  padding-right: 4vw;
+}
+
+.container-custom {
+  max-width: 1155px;
+  margin: 0 auto;
+  padding-left: 2vw;
+  padding-right: 2vw;
+}
+
+.bg-dark-green {
+    --bs-bg-opacity: 1;
+    background-color: #073f25 !important;
+}
+
+.tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: transform 0.2s ease-in-out;
+  padding: 10px;
+  background-color: #f8f9fa;
+}
+
+.tile:hover {
+  transform: translateY(-5px);
+  background-color: #e9ecef;
+}
+
+.icon-img-u{
+    height: 2rem;
+  object-fit: cover;
+}
+
+.icon-img {
+height:100%;
+  object-fit: cover;
+  max-width: 100%; 
+}
+
+
+.icon-label {
+  margin-top: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #333;
+}
+
+.fs-4 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: bold;
+  animation: colorFade 10s infinite;
+}
+
+.py-3 {
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+}
+
+@keyframes colorFade {
+  from { color: #ccc; }
+  to { color: #333; }
+}
+
+.footer {
+  text-align: center;
+  padding: 2vw 0;
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+.youtube-container {
+  position: relative;
+  width: 100%;
+  max-width: 1260px;
+  margin: 0 auto;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.youtube-container iframe {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+
+/* 설문 */
+ /* 그라데이션 애니메이션 정의 */
+    @keyframes gradientShift {
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* 화려한 버튼 스타일 */
+    .btn-fancy {
+      display: inline-block;
+      padding: 1rem 1rem;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #fff;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border: none;
+      border-radius: 30px;
+      background: linear-gradient(45deg, #ff416c, #ff4b2b, #1d2671, #c33764);
+      background-size: 300% 300%;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: gradientShift 5s ease infinite;
+    }
+   
+/* (기존) 고정 위치 */
+.btn-fancy-fixed {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+}
+
+/* (기존) 일반 호버—고정 버튼 이외에는 사용 */
+.btn-fancy:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 0 25px rgba(0,0,0,0.3);
+}
+
+/* (추가) 고정된 버튼의 호버—translateX 유지 */
+.btn-fancy.btn-fancy-fixed:hover {
+  transform: translateX(-50%) translateY(-3px) scale(1.05);
+  box-shadow: 0 0 25px rgba(0,0,0,0.3);
+}
+/* 스크롤 시에도 하단 중앙에 고정 */
+.btn-fancy-fixed {
+  position: fixed;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+}  
+.py-3 {
+    align-content: center;}
+	
+</STYLE>
+  
+
+
+
+</head>
+
+  
+
+<body class="bg-fill"><!-- oncontextmenu="return false" onselectstart="return false" ondragstart="return false" onkeydown="return false" -->
+   
+
+  <div class="container "  style="padding-left: 3.5vw; padding-right: 3.5vw;" > 
+   <header>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand fw-bold " href="#">엑스포 컬리넌시티-소식지</a>
+      <button class="navbar-toggler" type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarCollapse"
+              aria-controls="navbarCollapse"
+              aria-expanded="false"
+              aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <!-- 메뉴를 오른쪽 끝으로 정렬하려면 ms-auto 사용 -->
+       <ul class="navbar-nav ms-auto mb-md-0">
+
+          <!-- 1) 홈페이지 -->
+          <li class="nav-item">
+            <a class="nav-link active"
+               aria-current="page"
+               href="https://cnt-mh.github.io/MH/DEV/APT/EXPO/index.html">
+              메인페이지돌아가기
+            </a>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+ <!-- 이미지 임베드 섹션 -->
+<section id="misconception" class="container my-5">
+<div class="text-center">
+    <img
+      src="https://cafeptthumb-phinf.pstatic.net/MjAyNTEwMTdfNjcg/MDAxNzYwNjgxMDgwOTc4.GyPyZnVqOnLjEsRHNM_ehElh4aTiGZ5v9jfgrYwGu38g.rrbBYI1L6FBhkK_OuwQQMHUimGn7OoEEXOnTF30H9xog.PNG/251015_%EC%97%91%EC%8A%A4%ED%8F%AC_%EC%9E%AC%EA%B1%B4%EC%B6%95_%EB%B0%94%EB%A5%B4%EA%B2%8C_%EC%95%8C%EC%95%84%EB%B3%B4%EA%B8%B0_1.png?type=w1600"
+      alt="251023_엑스포아파트 소식지 (25-04)"
+      class="img-fluid rounded shadow-sm">
+  </div>
+  <div class="text-center">
+    <img
+      src="https://cafeptthumb-phinf.pstatic.net/MjAyNTEwMTdfMjQw/MDAxNzYwNjgxMDgzNjMy.v3YK6dXvD63L73h5ANRlFJ3guu1oEjXVmxrxOaZ8MzMg.q56iXNDanEpa5KypkTTWqemgVS-YAB550Khg_RoHrO0g.PNG/251015_%EC%97%91%EC%8A%A4%ED%8F%AC_%EC%9E%AC%EA%B1%B4%EC%B6%95_%EB%B0%94%EB%A5%B4%EA%B2%8C_%EC%95%8C%EC%95%84%EB%B3%B4%EA%B8%B0_2.png?type=w1600"
+      alt="251023_엑스포아파트 소식지 (25-04)"
+      class="img-fluid rounded shadow-sm">
+  </div>
+  <div class="text-center">
+    <img
+      src="https://cafeptthumb-phinf.pstatic.net/MjAyNTEwMTdfMTQ4/MDAxNzYwNjgxMDg5MzY5.kzDXU0_qswV4xOLprT77p-aFoG3wFHmoDCQJJ95LZ7Ug.yJJHWbvxVhbYv650xW02Kn7msDgfN2Y4LW3LyjOc4VMg.PNG/251015_%EC%97%91%EC%8A%A4%ED%8F%AC_%EC%9E%AC%EA%B1%B4%EC%B6%95_%EB%B0%94%EB%A5%B4%EA%B2%8C_%EC%95%8C%EC%95%84%EB%B3%B4%EA%B8%B0_3.png?type=w1600"
+      alt="251023_엑스포아파트 소식지 (25-04)"
+      class="img-fluid rounded shadow-sm">
+  </div>
+    <div class="text-center">
+    <img
+      src="https://cafeptthumb-phinf.pstatic.net/MjAyNTEwMTdfMjA5/MDAxNzYwNjgxMDkzMTMw.jf6v8-grb51sA0PSU2HYwx8dMl9ZF2aQjasOrLAE-2Mg.BwCPNUH-ZfUQvwECL9xLTa46fsZj2iWQQ-Pb-jF6oHQg.PNG/251015_%EC%97%91%EC%8A%A4%ED%8F%AC_%EC%9E%AC%EA%B1%B4%EC%B6%95_%EB%B0%94%EB%A5%B4%EA%B2%8C_%EC%95%8C%EC%95%84%EB%B3%B4%EA%B8%B0_4.png?type=w1600"
+      alt="251023_엑스포아파트 소식지 (25-04)"
+      class="img-fluid rounded shadow-sm">
+  </div>
+  <div class="text-center">
+    <img
+      src="https://cafeptthumb-phinf.pstatic.net/MjAyNTA5MjVfNjAg/MDAxNzU4NzcxNjU4MzE4.aU_sLuc-maWi6PqIpiRb0Im7n8rMYx16y7rYzH_6bpMg.lcbVX3ypxhwCTTJAOtcLqlYboXm3mJdtgs3LEMn0aYog.PNG/250912_%EC%97%91%EC%8A%A4%ED%8F%AC%EC%95%84%ED%8C%8C%ED%8A%B8_%EC%86%8C%EC%8B%9D%EC%A7%80_%2825-03%29_4.png?type=w1600"
+      alt="251023_엑스포아파트 소식지 (25-04)"
+      class="img-fluid rounded shadow-sm">
+  </div>
+</section>
+	<!--##################### footer 시작 -->
+<style>
+.footer-links {
+  margin-bottom: 8px;
+}
+
+.footer-links a {
+  color: #555;
+  text-decoration: none;
+  margin: 0 4px;
+  font-weight: 400;
+}
+
+.footer-links span {
+  color: #bbb;
+  margin: 0 4px;
+}
+
+.footer-links.mid-links a {
+  color: #888;
+  font-weight: 400;
+}
+
+.footer-copy {
+  margin-top: 8px;
+  color: #aaa;
+}
+</style>
+
+<footer class="container-fluid mt-5 ">
+  <div class="container text-center text-md-center py-4" style="color: #666; font-size: 0.9rem;">
+    
+    <!-- 1행: 문의처 -->
+    <div class="mb-1 ">
+      <strong>문의처</strong>
+      <a href="https://CNT-MH.githubusercontent.io/MH/DEV/APT/EXPO/AS/center.html" style="color: #666; text-decoration: none;"> | 엑스포아파트 재건축 추진준비 위원회 </a>
+      <br class="d-md-none">
+      · 중앙상가 재건축 상담센터
+    </div>
+
+    <!-- 2행: 연락처 -->
+    <div class="mb-1">
+      <strong>TEL</strong> | 
+      <a href="tel:0428671003" style="color: #666; text-decoration: none;">
+        042-867-1003</a>
+		<br class="d-md-none">
+		  <strong>&nbsp;SMS</strong> | 
+		<a href="sms:01076586114" style="color: #666; text-decoration: none;">
+      010-7658-6114
+    </div>
+
+    <!-- 3행: 제작 -->
+    <div>
+      <strong>제작</strong> | ㈜머핀홀딩스
+    </div>
+
+    <!-- 4행: 저작권 -->
+    <div class="mt-2 text-muted" style="font-size: 0.8rem;">
+      © 2025  ㈜머핀홀딩스 All rights reserved.
+    </div>
+
+  </div>
+</footer>
+
+
+
+  <div class="container">
+  <div style="color:#666; text-align:right; font-size: calc(10px + 0.2vw);">Created by glass</div>
+</div></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0/html2canvas.js"></script>
+<script src = "test.js"></script>
+<!--##################### footer 끝 -->
+</body>
+</html>
