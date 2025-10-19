@@ -25,8 +25,8 @@
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
         <link href="https://unpkg.com/swiper/swiper-bundle.min.css" rel="stylesheet" > 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-
+<!-- Bootstrap JS (선택) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0/html2canvas.js"></script>
         <script src = "test.js"></script>
         <!-- Swiper.js (터치 슬라이더) 스타일 적용 -->
@@ -501,7 +501,7 @@
                         <span class="badge-new">NEW</span>
                 </a>
         </div>
-		
+
 <!--게시물 - 소식지 -->     
         <div class="board-card" style="margin-top: 1.25rem;">
                 <a href="https://cnt-mh.github.io/MH/DEV/APT/EXPO/AS/board4.html" target="_blank" class="board-link">
@@ -683,8 +683,8 @@
   <!-- Swiper 컨테이너: 가운데 메인, 양옆 슬쩍 보이는 레이아웃 -->
   <div class="swiper" id="iconCardSwiper">
     <div class="swiper-wrapper">
-    
-    
+
+
       <!-- 1) 2차대설명회영상-->
       <div class="swiper-slide">
         <a class="icon-card" href="https://m.youtube.com/watch?v=eHmOZvoqU0w&list=PLqrOhy8cJakHfmzVNA68iJ9kk1YXSLq_c&index=1&pp=iAQB0gcJCfsJAYcqIYzv" target="_blank" aria-label="2차대설명회영상">
@@ -692,8 +692,8 @@
           <div class="icon-card__label"><span class="badge-new">new</span>&nbsp;&nbsp;2차 대설명회</div>
         </a>
       </div>
-      
-      
+
+
 
       <!-- 1) 홈페이지 -->
       <div class="swiper-slide">
@@ -766,8 +766,6 @@
   });
 </script>
 
-<!-- Bootstrap JS (선택) -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </section>
 
@@ -965,39 +963,39 @@
     });
   </script>-->
 
-  
+
 <!-- ✅ 팝업이 삽입될 컨테이너 -->
 <div id="popup-container"></div>
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    
+
     /** ✅ 팝업 노출 기간 설정 **/
     const startDate = new Date("2025-10-09T00:00:00"); // 노출 시작일
     const endDate = new Date("2025-10-10T12:59:59"); // 노출 종료일
     const today = new Date();
-    
+
     // ✅ 팝업을 오늘 닫았는지 여부 (localStorage)
     const closedToday = localStorage.getItem("popupClosedDate");
     const todayString = today.toDateString();
-    
+
     // ✅ 오늘 이미 닫은 경우 → 표시하지 않음
    // if (closedToday === todayString) return;
-    
+
     // ✅ 노출 기간이 아닐 경우 → 표시하지 않음
     if (today < startDate || today > endDate) return;
-    
+
     /** ✅ popup.html 불러오기 **/
     fetch("https://cnt-mh.github.io/MH/DEV/APT/EXPO/popup.html")
       .then(res => res.text())
       .then(html => {
         document.getElementById("popup-container").innerHTML = html;
-        
+
         const wrap = document.getElementById("popup-wrap");
         const closeBtn = document.getElementById("popup-confirm");
-        
+
         if (wrap) wrap.style.display = "flex";
-        
+
         // 확인 버튼 클릭 시 닫기 + 오늘은 다시 안 보기
         if (closeBtn) {
           closeBtn.addEventListener("click", () => {
@@ -1012,4 +1010,3 @@
 </body>
 
 </html>
-
