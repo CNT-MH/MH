@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>팝업창</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .popup-wrap {
+      background-color: rgba(0, 0, 0, 0.4);
+      justify-content: center;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: none;
+      padding: 15px;
+      z-index: 9999;
+    }
+
+    .popup {
+      width: 90%;
+      max-width: 500px;
+      background-color: #fe7700;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 5px 10px 10px 1px rgba(0, 0, 0, .3);
+      color: white;
+    }
+
+    .popup-head {
+      padding: 16px;
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .popup-body {
+
+    font-weight: bold;
+      background-color: white;
+      color: #000;
+      padding: 10px;
+      text-align: center;
+    }
+
+    .popup-body h1 {
+      font-size: 1.4rem;
+      margin-bottom: 12px;
+      color: #264db5;
+    }
+
+    .popup-body p {
+      margin: 6px 0;
+    }
+
+    .popup-foot {
+      display: flex;
+      border-top: 0.1px  solid #ccc;
+      height: 50px;
+    }
+
+    .pop-btn {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      font-weight: bold;
+      background: #fe7700;
+      color: white;
+    }
+.pop-btn:active {
+  transform: scale(0.97);
+  opacity: 0.8;
+}
+    .pop-btn + .pop-btn {
+     // border-left: 0.1px  solid #fff;
+    }
+
+    @media (max-width: 576px) {
+      .popup {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- 오버레이 + 팝업 -->
+<div class="popup-wrap" id="popup-wrap">
+  <div class="popup">
+    <!--<div class="popup-head" style="
+    padding-right: 5px;
+    padding-left: 5px;
+">  </div>-->
+    <div class="popup-body" style="padding-bottom: 0px;padding-top: 0px;">
+       <img src="https://raw.githubusercontent.com/CNT-MH/MH/main/DEV/APT/EXPO/AS/2025추석엑스포.png" alt="추석" stylealt="추석이미지" style="max-width:100%; height:auto; margin:10px 0;">
+
+        </div>
+    <div class="popup-foot">
+     <div class="pop-btn" id="popup-confirm">확인</div>
+            <!-- <div class="pop-btn" id="popup-confirm">확인</div>
+      <div class="pop-btn" id="popup-close-today">닫기</div>-->
+    </div>
+  </div>
+</div>
+
+
+<!-- 팝업 내용을 불러올 컨테이너 (popup.html 파일이 여기에 삽입됨) 
+<div id="popup-container"></div>
+
+<script>
+
+// ********================= 팝업 열기 함수 =================
+ function showPopup() {
+        //****** popup.html 안에는 <div id="popup-wrap"> 가 있다고 가정
+    const wrap = document.getElementById("popup-wrap");
+    if (wrap) wrap.style.display = "flex";  
+         //***** display:flex → 화면 중앙 정렬된 팝업이 보이도록 설정
+}
+
+// *****================= 팝업 닫기 함수 =================
+function hidePopup() {
+    const wrap = document.getElementById("popup-wrap");
+    if (wrap) wrap.style.display = "none";  
+    //***** display:none → 팝업 숨김
+}
+
+// ================= 페이지 로드 시 실행 =================
+window.addEventListener('DOMContentLoaded', function () {
+    // popup.html 파일을 fetch 로 불러옴
+    fetch('https://cnt-mh.github.io/MH/DEV/APT/EXPO/popup.html')
+        .then(res => res.text())   // 응답을 HTML 텍스트로 변환
+        .then(html => {
+            // 불러온 popup.html 내용을 #popup-container 안에 삽입
+            document.getElementById("popup-container").innerHTML = html;
+            
+            // 팝업 열기
+            showPopup();
+
+            // popup.html 안에 확인 버튼이 있다고 가정 (id="popup-confirm")
+            // 확인 버튼을 누르면 팝업 닫기 실행
+            document.getElementById("popup-confirm")?.addEventListener("click", hidePopup);
+        })
+        .catch(err => console.error("팝업 불러오기 실패:", err));
+});
+</script>-->
+   
+<script>
+window.addEventListener('DOMContentLoaded', () => {
+  document.getElementById("popup-wrap").style.display = "flex";
+});
+</script>
+  
+ 
+</body>
+</html> 
