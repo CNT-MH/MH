@@ -1,166 +1,150 @@
 <!DOCTYPE html>
-
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <title>팝업창</title>
+  <title>Shorts popup</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin:0; padding:0; box-sizing:border-box; }
 
     .popup-wrap {
-      background-color: rgba(0, 0, 0, 0.4);
+      background-color: rgba(0,0,0,.4);
       justify-content: center;
       align-items: center;
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
+      inset: 0;
       display: none;
       padding: 15px;
       z-index: 9999;
     }
-
     .popup {
       width: 90%;
       max-width: 500px;
-      background-color: #fe7700;
       border-radius: 10px;
       overflow: hidden;
-      box-shadow: 5px 10px 10px 1px rgba(0, 0, 0, .3);
-      color: white;
-    }
-
-    .popup-head {
-      padding: 16px;
-      text-align: center;
-      font-size: 1.5rem;
-      font-weight: bold;
-    }
-
-    .popup-body {
-
-    font-weight: bold;
-      background-color: white;
+      box-shadow: 5px 10px 10px 1px rgba(0,0,0,.3);
+      background: #fff;
       color: #000;
-      padding: 10px;
-      text-align: center;
     }
-
-    .popup-body h1 {
-      font-size: 1.4rem;
-      margin-bottom: 12px;
-      color: #264db5;
-    }
-
-    .popup-body p {
-      margin: 6px 0;
-    }
+    .popup-body { text-align:center; font-weight:bold; }
 
     .popup-foot {
-      display: flex;
-      border-top: 0.1px  solid #ccc;
-      height: 50px;
+      display:flex; border-top:.1px solid #ccc; height:50px;
     }
-
     .pop-btn {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-      font-weight: bold;
-      background: #fe7700;
-      color: white;
+      flex:1; display:flex; justify-content:center; align-items:center;
+      cursor:pointer; font-weight:bold; background:#cdcdcd; color:#fff;
+      transition: transform .05s ease, opacity .05s ease;
     }
-.pop-btn:active {
-  transform: scale(0.97);
-  opacity: 0.8;
-}
-    .pop-btn + .pop-btn {
-     // border-left: 0.1px  solid #fff;
+    .pop-btn:active { transform:scale(.97); opacity:.8; }
+
+    .thumb-slide {
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+      display: block;
     }
 
-    @media (max-width: 576px) {
-      .popup {
-        width: 100%;
-      }
+    .thumb-slide img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 10px;
+    }
+
+    .swiper-pagination {
+      position: relative;
+      margin-top: 8px;
+      text-align: center;
+    }
+
+    .swiper-pagination-bullet {
+      width: 10px;
+      height: 10px;
+      background: #818181;
+      opacity: 1;
+      margin: 0 5px !important;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255);
+      transition: all .3s ease;
+    }
+
+    .swiper-pagination-bullet-active {
+      background: #007aff;
+      border: none;
+      transform: scale(1.4);
     }
   </style>
+
 </head>
+
 <body>
 
-<!-- 오버레이 + 팝업 -->
 <div class="popup-wrap" id="popup-wrap">
   <div class="popup">
-    <!--<div class="popup-head" style="
-    padding-right: 5px;
-    padding-left: 5px;
-">  </div>-->
-    <div class="popup-body" style="padding-bottom: 0px;padding-top: 0px;">
-       <img src="https://raw.githubusercontent.com/CNT-MH/MH/main/DEV/APT/EXPO/AS/2025추석엑스포.png" alt="추석" stylealt="추석이미지" style="max-width:100%; height:auto; margin:10px 0;">
+    <div class="popup-body" style="padding:15px;">
+      <!-- 팝업 상단 제목 또는 안내가 필요하면 여기에 추가 -->
+    </div>
 
+    <!-- Swiper 슬라이더 -->
+    <div class="shorts-swiper swiper">
+      <div class="swiper-wrapper" id="shortsContainer">
+
+        <!-- GIF 1 -->
+        <div class="swiper-slide">
+          <div class="thumb-slide">
+            <img src="https://raw.githubusercontent.com/CNT-MH/MH/main/DEV/APT/EXPO/AS/board/PNG/251119_%EC%97%91%EC%8A%A4%ED%8F%AC%EC%95%84%ED%8C%8C%ED%8A%B8%20%EB%B6%84%EC%96%91%EA%B0%80%20%EC%A0%84%EB%8B%A8%EC%A7%801.gif"
+                 alt="GIF 이미지">
+          </div>
         </div>
+
+        <!-- GIF 2 -->
+        <div class="swiper-slide">
+          <div class="thumb-slide">
+            <img src="https://raw.githubusercontent.com/CNT-MH/MH/main/DEV/APT/EXPO/AS/board/PNG/251119_%EC%97%91%EC%8A%A4%ED%8F%AC%EC%95%84%ED%8C%8C%ED%8A%B8%20%EB%B6%84%EC%96%91%EA%B0%80%20%EC%A0%84%EB%8B%A8%EC%A7%801.gif"
+                 alt="GIF 이미지">
+          </div>
+        </div>
+
+      </div>
+
+      <div class="swiper-pagination"></div>
+    </div>
+
     <div class="popup-foot">
-     <div class="pop-btn" id="popup-confirm">확인</div>
-            <!-- <div class="pop-btn" id="popup-confirm">확인</div>
-      <div class="pop-btn" id="popup-close-today">닫기</div>-->
+      <div class="pop-btn" id="popup-confirm">확인</div>
     </div>
   </div>
 </div>
 
-
-<!-- 팝업 내용을 불러올 컨테이너 (popup.html 파일이 여기에 삽입됨) 
-<div id="popup-container"></div>
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 
 <script>
+  const shortsList = [];
 
-// ********================= 팝업 열기 함수 =================
- function showPopup() {
-        //****** popup.html 안에는 <div id="popup-wrap"> 가 있다고 가정
-    const wrap = document.getElementById("popup-wrap");
-    if (wrap) wrap.style.display = "flex";  
-         //***** display:flex → 화면 중앙 정렬된 팝업이 보이도록 설정
-}
+  window.addEventListener('DOMContentLoaded', () => {
+    const popup = document.getElementById('popup-wrap');
+    popup.style.display = 'flex';
 
-// *****================= 팝업 닫기 함수 =================
-function hidePopup() {
-    const wrap = document.getElementById("popup-wrap");
-    if (wrap) wrap.style.display = "none";  
-    //***** display:none → 팝업 숨김
-}
+    document.getElementById('popup-confirm').addEventListener('click', () => {
+      popup.style.display = 'none';
+    });
 
-// ================= 페이지 로드 시 실행 =================
-window.addEventListener('DOMContentLoaded', function () {
-    // popup.html 파일을 fetch 로 불러옴
-    fetch('https://cnt-mh.github.io/MH/DEV/APT/EXPO/popup.html')
-        .then(res => res.text())   // 응답을 HTML 텍스트로 변환
-        .then(html => {
-            // 불러온 popup.html 내용을 #popup-container 안에 삽입
-            document.getElementById("popup-container").innerHTML = html;
-            
-            // 팝업 열기
-            showPopup();
-
-            // popup.html 안에 확인 버튼이 있다고 가정 (id="popup-confirm")
-            // 확인 버튼을 누르면 팝업 닫기 실행
-            document.getElementById("popup-confirm")?.addEventListener("click", hidePopup);
-        })
-        .catch(err => console.error("팝업 불러오기 실패:", err));
-});
-</script>-->
-   
-<script>
-window.addEventListener('DOMContentLoaded', () => {
-  document.getElementById("popup-wrap").style.display = "flex";
-});
+    // Swiper 초기화
+    new Swiper('.shorts-swiper', {
+      loop: true,
+      slidesPerView: 1,
+      spaceBetween: 10,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+    });
+  });
 </script>
-  
- 
+
 </body>
-</html> 
+</html>
+
