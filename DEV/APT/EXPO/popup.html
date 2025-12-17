@@ -1,31 +1,14 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>popup</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
 
   <style>
     * { margin:0; padding:0; box-sizing:border-box; }
-    html, body { height: 100%; }
 
-    /* =========================
-       Confetti Background
-    ========================== */
-    #confetti-bg{
-      position: fixed;
-      inset: 0;
-      width: 100vw;
-      height: 100vh;
-      pointer-events: none;
-      z-index: 0;     /* ✅ 폭죽 레이어 */
-      opacity: .95;
-    }
-
-    /* =========================
-       Popup
-    ========================== */
     .popup-wrap {
       background-color: rgba(0,0,0,.4);
       justify-content: center;
@@ -34,9 +17,8 @@
       inset: 0;
       display: none;
       padding: 15px;
-      z-index: 9999; /* ✅ 팝업은 폭죽보다 위 */
+      z-index: 9999;
     }
-
     .popup {
       width: 90%;
       max-width: 500px;
@@ -46,32 +28,18 @@
       background: #fff;
       color: #000;
     }
-
     .popup-body { text-align:center; font-weight:bold; }
 
     .popup-foot {
-      display:flex;
-      border-top:.1px solid #ccc;
-      height:50px;
+      display:flex; border-top:.1px solid #ccc; height:50px;
     }
-
     .pop-btn {
-      flex:1;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      cursor:pointer;
-      font-weight:bold;
-      background:#cdcdcd;
-      color:#fff;
+      flex:1; display:flex; justify-content:center; align-items:center;
+      cursor:pointer; font-weight:bold; background:#cdcdcd; color:#fff;
       transition: transform .05s ease, opacity .05s ease;
     }
-
     .pop-btn:active { transform:scale(.97); opacity:.8; }
 
-    /* =========================
-       Swiper
-    ========================== */
     .thumb-slide {
       position: relative;
       overflow: hidden;
@@ -109,184 +77,73 @@
       transform: scale(1.4);
     }
   </style>
+
 </head>
 
 <body>
 
-  <!-- ✅ 폭죽 배경 -->
-  <canvas id="confetti-bg" aria-hidden="true"></canvas>
 
-  <!-- ✅ 팝업 -->
-  <div class="popup-wrap" id="popup-wrap">
-    <div class="popup">
-      <div class="popup-body" style="padding:0px;">
-        <!-- 팝업 상단 제목 또는 안내가 필요하면 여기에 추가 -->
-      </div>
+<div class="popup-wrap" id="popup-wrap">
+  <div class="popup">
+    <div class="popup-body" style="padding:0px;">
+      <!-- 팝업 상단 제목 또는 안내가 필요하면 여기에 추가 -->
+    </div>
 
-      <div class="shorts-swiper swiper">
-        <div class="swiper-wrapper" id="shortsContainer">
-          <div class="swiper-slide">
-            <div class="thumb-slide">
-              <img
-                src="https://raw.githubusercontent.com/CNT-MH/MH/main/DEV/APT/EXPO/AS/board/PNG/1223.png"
-                alt="이미지"
-              />
-            </div>
+    <!-- Swiper 슬라이더 -->
+    <div class="shorts-swiper swiper">
+      <div class="swiper-wrapper" id="shortsContainer">
+
+        <!-- GIF 1 -->
+        <div class="swiper-slide">
+          <div class="thumb-slide">
+            <img src="https://raw.githubusercontent.com/CNT-MH/MH/main/DEV/APT/EXPO/AS/board/PNG/1223.png"
+                 alt=" 이미지">
           </div>
-
-          <!-- 추가 슬라이드가 필요하면 여기 복사 -->
         </div>
 
-        <div class="swiper-pagination"></div>
+        <!-- GIF 2 
+        <div class="swiper-slide">
+          <div class="thumb-slide">
+            <img src="https://raw.githubusercontent.com/CNT-MH/MH/main/DEV/APT/EXPO/AS/board/PNG/251119_%EC%97%91%EC%8A%A4%ED%8F%AC%EC%95%84%ED%8C%8C%ED%8A%B8%20%EB%B6%84%EC%96%91%EA%B0%80%20%EC%A0%84%EB%8B%A8%EC%A7%801.gif"
+                 alt="GIF 이미지">
+          </div>
+        </div> -->
+
       </div>
 
-      <div class="popup-foot">
-        <div class="pop-btn" id="popup-confirm">확인</div>
-      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+
+    <div class="popup-foot">
+      <div class="pop-btn" id="popup-confirm">확인</div>
     </div>
   </div>
+</div>
 
-  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 
-  <script>
-    /* =========================
-       Confetti Script
-    ========================== */
-    (() => {
-      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      if (reduceMotion) return;
+<script>
+  const shortsList = [];
 
-      const canvas = document.getElementById("confetti-bg");
-      const ctx = canvas.getContext("2d", { alpha: true });
+  window.addEventListener('DOMContentLoaded', () => {
+    const popup = document.getElementById('popup-wrap');
+    popup.style.display = 'flex';
 
-      // ✅ CSS와 동일하게 레이어 일관성 유지
-      Object.assign(canvas.style, {
-        position: "fixed",
-        inset: "0",
-        width: "100vw",
-        height: "100vh",
-        zIndex: "0",
-        pointerEvents: "none"
-      });
-
-      let W = 0, H = 0, dpr = 1;
-
-      function resize() {
-        dpr = Math.max(1, window.devicePixelRatio || 1);
-        W = Math.floor(window.innerWidth);
-        H = Math.floor(window.innerHeight);
-        canvas.width = Math.floor(W * dpr);
-        canvas.height = Math.floor(H * dpr);
-        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      }
-      window.addEventListener("resize", resize, { passive: true });
-      resize();
-
-      const COLORS = ["#FF5A5F", "#00A699", "#FC642D", "#6C5CE7", "#00B894", "#FDCB6E", "#0984E3"];
-      const confetti = [];
-      const COUNT = 140;
-      const GRAVITY = 0.12;
-      const DRAG = 0.998;
-      const WOBBLE = 0.08;
-      const SPAWN_TOP = -30;
-
-      function rand(min, max) { return Math.random() * (max - min) + min; }
-      function pick(arr) { return arr[(Math.random() * arr.length) | 0]; }
-
-      function createPiece() {
-        const size = rand(6, 14);
-        return {
-          x: rand(0, W),
-          y: rand(SPAWN_TOP, SPAWN_TOP - 200),
-          w: size * rand(0.6, 1.2),
-          h: size * rand(0.8, 1.8),
-          r: rand(0, Math.PI * 2),
-          vr: rand(-0.18, 0.18),
-          vx: rand(-1.8, 1.8),
-          vy: rand(1.2, 4.0),
-          wobble: rand(0, Math.PI * 2),
-          wobbleSpeed: rand(0.01, 0.03),
-          color: pick(COLORS),
-          alpha: rand(0.7, 1.0)
-        };
-      }
-
-      for (let i = 0; i < COUNT; i++) confetti.push(createPiece());
-
-      let lastTs = 0;
-
-      function tick(ts) {
-        const dt = Math.min(32, ts - lastTs || 16);
-        lastTs = ts;
-
-        ctx.clearRect(0, 0, W, H);
-
-        for (let i = 0; i < confetti.length; i++) {
-          const p = confetti[i];
-
-          p.vy += GRAVITY * (dt / 16);
-          p.vx *= DRAG;
-          p.vy *= DRAG;
-
-          p.wobble += p.wobbleSpeed * dt;
-          p.x += (p.vx + Math.sin(p.wobble) * WOBBLE * 10) * (dt / 16);
-          p.y += p.vy * (dt / 16);
-          p.r += p.vr * (dt / 16);
-
-          if (p.y > H + 40 || p.x < -60 || p.x > W + 60) {
-            confetti[i] = createPiece();
-            continue;
-          }
-
-          ctx.save();
-          ctx.globalAlpha = p.alpha;
-
-          ctx.translate(p.x, p.y);
-          ctx.rotate(p.r);
-
-          ctx.fillStyle = p.color;
-          ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
-
-          ctx.globalAlpha = p.alpha * 0.35;
-          ctx.fillStyle = "#FFFFFF";
-          ctx.fillRect(-p.w / 2, -p.h / 2, Math.max(1, p.w * 0.18), p.h);
-
-          ctx.restore();
-        }
-
-        requestAnimationFrame(tick);
-      }
-
-      requestAnimationFrame(tick);
-    })();
-
-    /* =========================
-       Popup + Swiper Script
-    ========================== */
-    window.addEventListener('DOMContentLoaded', () => {
-      const popup = document.getElementById('popup-wrap');
-      const btnConfirm = document.getElementById('popup-confirm');
-
-      // 팝업 오픈
-      popup.style.display = 'flex';
-
-      // 팝업 닫기
-      btnConfirm.addEventListener('click', () => {
-        popup.style.display = 'none';
-      });
-
-      // Swiper 초기화
-      new Swiper('.shorts-swiper', {
-        loop: true,
-        slidesPerView: 1,
-        spaceBetween: 10,
-        pagination: {
-          el: '.swiper-pagination',
-          clickable: true,
-        },
-      });
+    document.getElementById('popup-confirm').addEventListener('click', () => {
+      popup.style.display = 'none';
     });
-  </script>
 
+    // Swiper 초기화
+    new Swiper('.shorts-swiper', {
+      loop: true,
+      slidesPerView: 1,
+      spaceBetween: 10,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+    });
+  });
+</script>
 </body>
 </html>
