@@ -88,6 +88,65 @@
       display: none;
     }
   </style>
+  <!--####################################-->
+  <!--뉴스카드--->
+  <style>
+  
+  /* ✅ 카드 전체 */
+.news-card{
+  display: block;
+  width: 100%;
+  border: 1px solid rgba(0,0,0,.15);
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fff;
+  color: #111;
+  text-decoration: none;
+  box-shadow: 0 6px 18px rgba(0,0,0,.12);
+}
+
+/* ✅ 썸네일 영역 (비율 고정) */
+.news-thumb{
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;          /* 네이버 미리보기 느낌 */
+  background: #f2f2f2;
+}
+.news-thumb img{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;              /* 이미지 비율 달라도 꽉 채움 */
+  display: block;
+}
+
+/* ✅ 텍스트 영역 */
+.news-meta{
+  padding: 10px 12px 12px;
+}
+.news-title{
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.35;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;          /* 2줄까지만 */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.news-domain{
+  margin-top: 6px;
+  font-size: 12px;
+  color: #2b6cb0;
+}
+
+/* ✅ hover */
+.news-card:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(0,0,0,.18);
+}
+</style>
+
 </head>
 
 <body>
@@ -102,11 +161,82 @@
 
       <div class="shorts-swiper swiper">
         <div class="swiper-wrapper" id="shortsContainer">
-          <div class="swiper-slide">
-            <div class="thumb-slide">
-              <img src="https://raw.githubusercontent.com/CNT-MH/MH/main/DEV/APT/EXPO/AS/board/PNG/1223.png" alt="이미지">
-            </div>
-          </div>
+
+
+			<div class="swiper-slide">
+				<a class="news-card"
+				 href="https://dj.breaknews.com/253859"
+				 target="_blank"
+				 rel="noopener noreferrer">
+
+					<!-- ✅ 썸네일 -->
+					<div class="news-thumb">
+					  <img
+						src="https://dj.breaknews.com/imgdata/dj_breaknews_com/202512/2025122317412237.jpg"
+						alt="대전 최대 ‘엑스포아파트’, 6천 세대 매머드급 단지로 '재건축' 추진"
+						loading="lazy"/>
+					</div>
+
+					<!-- ✅ 텍스트 영역 -->
+					<div class="news-meta">
+					  <div class="news-title">
+						 대전 최대 ‘엑스포아파트’, 6천 세대 매머드급 단지로 '재건축' 추진
+					  </div>
+					  <div class="news-domain">dj.breaknews.com</div>
+					</div>
+
+				</a>
+			</div>
+			
+			<div class="swiper-slide">
+				<a class="news-card"
+				 href="https://news.tf.co.kr/read/national/2275666.htm"
+				 target="_blank"
+				 rel="noopener noreferrer">
+
+					<!-- ✅ 썸네일 -->
+					<div class="news-thumb">
+					  <img
+						src="https://cdn.housingtimes.co.kr/news/photo/202512/1610_1960_1251.jpeg"
+						alt="대전 최대 ‘엑스포아파트’, 6천 세대 매머드급 단지로 '재건축' 추진"
+						loading="lazy"/>
+					</div>
+
+					<!-- ✅ 텍스트 영역 -->
+					<div class="news-meta">
+					  <div class="news-title">
+						  유성구 엑스포아파트, 재건축 지구 지정 신청…최첨단 스마트 아파트로 만들 것
+					  </div>
+					  <div class="news-domain">news.tf.co.kr</div>
+					</div>
+
+				</a>
+			</div>
+				<div class="swiper-slide">
+				<a class="news-card"
+				 href="https://www.housingtimes.co.kr/news/articleView.html?idxno=1610"
+				 target="_blank"
+				 rel="noopener noreferrer">
+
+					<!-- ✅ 썸네일 -->
+					<div class="news-thumb">
+					  <img
+						src="https://cdn.housingtimes.co.kr/news/photo/202512/1610_1960_1251.jpeg"
+						alt="대전 최대 ‘엑스포아파트’, 6천 세대 매머드급 단지로 '재건축' 추진"
+						loading="lazy"/>
+					</div>
+
+					<!-- ✅ 텍스트 영역 -->
+					<div class="news-meta">
+					  <div class="news-title">
+						 대전 전민동 엑스포아파트 재건축, 재건축 정비구역 입안제안 신청...주민 열기 높아
+					  </div>
+					  <div class="news-domain">housingtimes.co.kr</div>
+					</div>
+
+				</a>
+			</div>
+
         </div>
         <!-- <div class="swiper-pagination"></div> -->
       </div>
