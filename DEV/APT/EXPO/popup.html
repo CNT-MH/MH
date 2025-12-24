@@ -76,315 +76,71 @@
       border: none;
       transform: scale(1.4);
     }
-
-    /* ✅ 전체화면 폭죽 캔버스 */
-    #confettiFullscreen{
-      position: fixed;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 10000; /* 팝업(9999) 위 */
-      display: none;
-    }
   </style>
-  <!--####################################-->
-  <!--뉴스카드--->
-  <style>
-  
-  /* ✅ 카드 전체 */
-.news-card{
-  display: block;
-  width: 100%;
-  border: 1px solid rgba(0,0,0,.15);
-  border-radius: 10px;
-  overflow: hidden;
-  background: #fff;
-  color: #111;
-  text-decoration: none;
-  box-shadow: 0 6px 18px rgba(0,0,0,.12);
-}
-
-/* ✅ 썸네일 영역 (비율 고정) */
-.news-thumb{
-  position: relative;
-  width: 100%;
-  aspect-ratio: 16 / 9;          /* 네이버 미리보기 느낌 */
-  background: #f2f2f2;
-}
-.news-thumb img{
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;              /* 이미지 비율 달라도 꽉 채움 */
-  display: block;
-}
-
-/* ✅ 텍스트 영역 */
-.news-meta{
-  padding: 10px 12px 12px;
-}
-.news-title{
-  font-size: 14px;
-  font-weight: 700;
-  line-height: 1.35;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;          /* 2줄까지만 */
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-.news-domain{
-  margin-top: 6px;
-  font-size: 12px;
-  color: #2b6cb0;
-}
-
-/* ✅ hover */
-.news-card:hover{
-  transform: translateY(-1px);
-  box-shadow: 0 10px 24px rgba(0,0,0,.18);
-}
-</style>
 
 </head>
 
 <body>
 
-  <!-- ✅ 전체화면 폭죽 캔버스 -->
-  <canvas id="confettiFullscreen"></canvas>
 
-  <!-- ✅ 팝업 -->
-  <div class="popup-wrap" id="popup-wrap">
-    <div class="popup">
-      <div class="popup-body" style="padding:0px;"></div>
+<div class="popup-wrap" id="popup-wrap">
+  <div class="popup">
+    <div class="popup-body" style="padding:0px;">
+      <!-- 팝업 상단 제목 또는 안내가 필요하면 여기에 추가 -->
+    </div>
 
-      <div class="shorts-swiper swiper">
-        <div class="swiper-wrapper" id="shortsContainer">
+    <!-- Swiper 슬라이더 -->
+    <div class="shorts-swiper swiper">
+      <div class="swiper-wrapper" id="shortsContainer">
 
-
-			<div class="swiper-slide">
-				<a class="news-card"
-				 href="https://dj.breaknews.com/253859"
-				 target="_blank"
-				 rel="noopener noreferrer">
-
-					<!-- ✅ 썸네일 -->
-					<div class="news-thumb">
-					  <img
-						src="https://dj.breaknews.com/imgdata/dj_breaknews_com/202512/2025122317412237.jpg"
-						alt="대전 최대 ‘엑스포아파트’, 6천 세대 매머드급 단지로 '재건축' 추진"
-						loading="lazy"/>
-					</div>
-
-					<!-- ✅ 텍스트 영역 -->
-					<div class="news-meta">
-					  <div class="news-title">
-						 대전 최대 ‘엑스포아파트’, 6천 세대 매머드급 단지로 '재건축' 추진
-					  </div>
-					  <div class="news-domain">dj.breaknews.com</div>
-					</div>
-
-				</a>
-			</div>
-			
-			<div class="swiper-slide">
-				<a class="news-card"
-				 href="https://news.tf.co.kr/read/national/2275666.htm"
-				 target="_blank"
-				 rel="noopener noreferrer">
-
-					<!-- ✅ 썸네일 -->
-					<div class="news-thumb">
-					  <img
-						src="https://cdn.housingtimes.co.kr/news/photo/202512/1610_1960_1251.jpeg"
-						alt="대전 최대 ‘엑스포아파트’, 6천 세대 매머드급 단지로 '재건축' 추진"
-						loading="lazy"/>
-					</div>
-
-					<!-- ✅ 텍스트 영역 -->
-					<div class="news-meta">
-					  <div class="news-title">
-						  유성구 엑스포아파트, 재건축 지구 지정 신청…최첨단 스마트 아파트로 만들 것
-					  </div>
-					  <div class="news-domain">news.tf.co.kr</div>
-					</div>
-
-				</a>
-			</div>
-				<div class="swiper-slide">
-				<a class="news-card"
-				 href="https://www.housingtimes.co.kr/news/articleView.html?idxno=1610"
-				 target="_blank"
-				 rel="noopener noreferrer">
-
-					<!-- ✅ 썸네일 -->
-					<div class="news-thumb">
-					  <img
-						src="https://cdn.housingtimes.co.kr/news/photo/202512/1610_1960_1251.jpeg"
-						alt="대전 최대 ‘엑스포아파트’, 6천 세대 매머드급 단지로 '재건축' 추진"
-						loading="lazy"/>
-					</div>
-
-					<!-- ✅ 텍스트 영역 -->
-					<div class="news-meta">
-					  <div class="news-title">
-						 대전 전민동 엑스포아파트 재건축, 재건축 정비구역 입안제안 신청...주민 열기 높아
-					  </div>
-					  <div class="news-domain">housingtimes.co.kr</div>
-					</div>
-
-				</a>
-			</div>
-
+        <!-- GIF 1 -->
+        <div class="swiper-slide">
+          <div class="thumb-slide">
+            <img src="https://raw.githubusercontent.com/CNT-MH/MH/main/DEV/APT/EXPO/AS/board/PNG/2401-01.png"
+                 alt=" 이미지">
+          </div>
         </div>
-        <!-- <div class="swiper-pagination"></div> -->
+   <!-- GIF 1 -->
+        <div class="swiper-slide">
+          <div class="thumb-slide">
+            <img src="https://raw.githubusercontent.com/CNT-MH/MH/main/DEV/APT/EXPO/AS/board/PNG/2401-02.png"
+                 alt=" 이미지">
+          </div>
+        </div>
+
+        <!-- GIF 2 
+        <div class="swiper-slide">
+          <div class="thumb-slide">
+            <img src="https://raw.githubusercontent.com/CNT-MH/MH/main/DEV/APT/EXPO/AS/board/PNG/251119_%EC%97%91%EC%8A%A4%ED%8F%AC%EC%95%84%ED%8C%8C%ED%8A%B8%20%EB%B6%84%EC%96%91%EA%B0%80%20%EC%A0%84%EB%8B%A8%EC%A7%801.gif"
+                 alt="GIF 이미지">
+          </div>
+        </div> -->
+
       </div>
 
-      <div class="popup-foot">
-        <div class="pop-btn" id="popup-confirm">확인</div>
-      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+
+    <div class="popup-foot">
+      <div class="pop-btn" id="popup-confirm">확인</div>
     </div>
   </div>
+</div>
 
-  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 
-  <script>
-  /* =========================================================
-     A) 전체화면 폭죽 엔진 (반복발사 1.8초 간격)
-     - startConfettiLoop(): 시작
-     - stopConfettiLoop(): 정리(타이머/RAF/파티클/캔버스)
-  ========================================================= */
-  (() => {
-    const canvas = document.getElementById('confettiFullscreen');
-    const ctx = canvas.getContext('2d');
+<script>
+  const shortsList = [];
 
-    const DPR = Math.min(2, window.devicePixelRatio || 1);
-    const colors = ['#ff4d4d','#ffd166','#06d6a0','#4dabf7','#b197fc','#f783ac','#ffffff'];
+  window.addEventListener('DOMContentLoaded', () => {
+    const popup = document.getElementById('popup-wrap');
+    popup.style.display = 'flex';
 
-    let particles = [];
-    let rafId = null;
-    let intervalId = null;
-    let running = false;
-
-    function rand(min, max){ return Math.random() * (max - min) + min; }
-
-    function resize(){
-      canvas.width  = Math.floor(innerWidth * DPR);
-      canvas.height = Math.floor(innerHeight * DPR);
-      canvas.style.width  = innerWidth + 'px';
-      canvas.style.height = innerHeight + 'px';
-      ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
-      ctx.clearRect(0, 0, innerWidth, innerHeight);
-    }
-
-    function burst(){
-      const x = rand(innerWidth * 0.2, innerWidth * 0.8);
-      const y = innerHeight * 0.2;
-
-      for(let i=0;i<200;i++){
-        const size = rand(4, 10);
-        particles.push({
-          x, y,
-          vx: rand(-7, 7),
-          vy: rand(-14, -5),
-          g: rand(0.18, 0.35),
-          drag: 0.985,
-          w: size,
-          h: size * rand(0.6, 1.7),
-          rot: rand(0, Math.PI*2),
-          vr: rand(-0.22, 0.22),
-          color: colors[(Math.random() * colors.length) | 0],
-          life: rand(70, 150)
-        });
-      }
-    }
-
-    function tick(){
-      if(!running) return;
-
-      ctx.clearRect(0, 0, innerWidth, innerHeight);
-      particles = particles.filter(p => p.life > 0 && p.y < innerHeight + 60);
-
-      for(const p of particles){
-        p.life -= 1;
-        p.vx *= p.drag;
-        p.vy = p.vy * p.drag + p.g;
-
-        p.x += p.vx;
-        p.y += p.vy;
-        p.rot += p.vr;
-
-        ctx.save();
-        ctx.translate(p.x, p.y);
-        ctx.rotate(p.rot);
-        ctx.fillStyle = p.color;
-        ctx.fillRect(-p.w/2, -p.h/2, p.w, p.h);
-        ctx.restore();
-      }
-
-      rafId = requestAnimationFrame(tick);
-    }
-
-    window.startConfettiLoop = function(){
-      window.stopConfettiLoop();     // 중복 방지
-      canvas.style.display = 'block';
-      resize();
-
-      running = true;
-      burst();                       // 즉시 1회 발사
-      rafId = requestAnimationFrame(tick);
-
-      // ✅ 1.8초 간격 반복 발사
-      intervalId = setInterval(burst, 1800);
-    };
-
-    window.stopConfettiLoop = function(){
-      if(intervalId){ clearInterval(intervalId); intervalId = null; }
-      if(rafId){ cancelAnimationFrame(rafId); rafId = null; }
-      running = false;
-      particles = [];
-      ctx.clearRect(0, 0, innerWidth, innerHeight);
-      canvas.style.display = 'none';
-    };
-
-    window.addEventListener('resize', () => {
-      if(running) resize();
+    document.getElementById('popup-confirm').addEventListener('click', () => {
+      popup.style.display = 'none';
     });
-  })();
 
-
-  /* =========================================================
-     B) 팝업 표시/닫기 + 폭죽 연동 (중복 로직 제거한 단일 버전)
-     - 팝업이 열릴 때: startConfettiLoop()
-     - 확인 버튼(닫기) : stopConfettiLoop()
-     - 노출기간/오늘닫기 로직 포함
-  ========================================================= */
-  document.addEventListener("DOMContentLoaded", () => {
-
-    // ✅ 노출 기간
-    const startDate = new Date("2025-10-09T00:00:00");
-    const endDate   = new Date("2026-10-10T12:59:59");
-    const today     = new Date();
-
-    if (today < startDate || today > endDate) return;
-
-    // ✅ 오늘 닫았는지(localStorage) - 필요하면 주석 해제
-    // const todayString = today.toDateString();
-    // if (localStorage.getItem("popupClosedDate") === todayString) return;
-
-    const wrap = document.getElementById("popup-wrap");
-    const closeBtn = document.getElementById("popup-confirm");
-
-    // ✅ 팝업 오픈
-    if (wrap) wrap.style.display = "flex";
-
-    // ✅ 폭죽 시작
-    if (typeof window.startConfettiLoop === "function") {
-      window.startConfettiLoop();
-    }
-
-    // ✅ Swiper 초기화(팝업 표시 후)
+    // Swiper 초기화
     new Swiper('.shorts-swiper', {
       loop: true,
       slidesPerView: 1,
@@ -394,22 +150,7 @@
         clickable: true,
       },
     });
-
-    // ✅ 닫기(확인) 클릭
-    if (closeBtn) {
-      closeBtn.addEventListener("click", () => {
-        if (wrap) wrap.style.display = "none";
-
-        // ✅ 폭죽 정리
-        if (typeof window.stopConfettiLoop === "function") {
-          window.stopConfettiLoop();
-        }
-
-        // ✅ 오늘 닫기 저장(필요하면 주석 해제)
-        // localStorage.setItem("popupClosedDate", todayString);
-      });
-    }
   });
-  </script>
+</script>
 </body>
 </html>
