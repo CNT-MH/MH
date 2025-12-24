@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>popup</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+
+    .popup-wrap {
+      background-color: rgba(0,0,0,.4);
+      justify-content: center;
+      align-items: center;
+      position: fixed;
+      inset: 0;
+      display: none;
+      padding: 15px;
+      z-index: 9999;
+    }
+    .popup {
+      width: 90%;
+      max-width: 500px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 5px 10px 10px 1px rgba(0,0,0,.3);
+      background: #fff;
+      color: #000;
+    }
+    .popup-body { text-align:center; font-weight:bold; }
+
+    .popup-foot {
+      display:flex; border-top:.1px solid #ccc; height:50px;
+    }
+    .pop-btn {
+      flex:1; display:flex; justify-content:center; align-items:center;
+      cursor:pointer; font-weight:bold; background:#cdcdcd; color:#fff;
+      transition: transform .05s ease, opacity .05s ease;
+    }
+    .pop-btn:active { transform:scale(.97); opacity:.8; }
+
+    .thumb-slide {
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+      display: block;
+    }
+
+    .thumb-slide img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 10px;
+    }
+
+    .swiper-pagination {
+      position: relative;
+      margin-top: 8px;
+      text-align: center;
+    }
+
+    .swiper-pagination-bullet {
+      width: 10px;
+      height: 10px;
+      background: #818181;
+      opacity: 1;
+      margin: 0 5px !important;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255);
+      transition: all .3s ease;
+    }
+
+    .swiper-pagination-bullet-active {
+      background: #007aff;
+      border: none;
+      transform: scale(1.4);
+    }
+  </style>
+
+</head>
+
+<body>
+
+
+<div class="popup-wrap" id="popup-wrap">
+  <div class="popup">
+    <div class="popup-body" style="padding:0px;">
+      <!-- 팝업 상단 제목 또는 안내가 필요하면 여기에 추가 -->
+    </div>
+
+    <!-- Swiper 슬라이더 -->
+    <div class="shorts-swiper swiper">
+      <div class="swiper-wrapper" id="shortsContainer">
+
+        <!-- GIF 1 -->
+        <div class="swiper-slide">
+          <div class="thumb-slide">
+            <img src="https://raw.githubusercontent.com/CNT-MH/MH/main/DEV/APT/EXPO/AS/board/PNG/1223.png"
+                 alt=" 이미지">
+          </div>
+        </div>
+
+        <!-- GIF 2 
+        <div class="swiper-slide">
+          <div class="thumb-slide">
+            <img src="https://raw.githubusercontent.com/CNT-MH/MH/main/DEV/APT/EXPO/AS/board/PNG/251119_%EC%97%91%EC%8A%A4%ED%8F%AC%EC%95%84%ED%8C%8C%ED%8A%B8%20%EB%B6%84%EC%96%91%EA%B0%80%20%EC%A0%84%EB%8B%A8%EC%A7%801.gif"
+                 alt="GIF 이미지">
+          </div>
+        </div> -->
+
+      </div>
+
+      <div class="swiper-pagination"></div>
+    </div>
+
+    <div class="popup-foot">
+      <div class="pop-btn" id="popup-confirm">확인</div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+<script>
+  const shortsList = [];
+
+  window.addEventListener('DOMContentLoaded', () => {
+    const popup = document.getElementById('popup-wrap');
+    popup.style.display = 'flex';
+
+    document.getElementById('popup-confirm').addEventListener('click', () => {
+      popup.style.display = 'none';
+    });
+
+    // Swiper 초기화
+    new Swiper('.shorts-swiper', {
+      loop: true,
+      slidesPerView: 1,
+      spaceBetween: 10,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+    });
+  });
+</script>
+</body>
+</html>
